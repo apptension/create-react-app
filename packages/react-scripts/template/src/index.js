@@ -11,8 +11,8 @@ import FontFaceObserver from 'fontfaceobserver';
 import 'normalize.css/normalize.css';
 import './theme/global';
 import configureStore from './modules/store';
-import UnsupportedBrowserDetection from './utils/unsupportedBrowserDetection';
-import browserHistory from './utils/history';
+import UnsupportedBrowserDetection from './shared/utils/unsupportedBrowserDetection';
+import browserHistory from './shared/utils/history';
 
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
@@ -36,7 +36,7 @@ const store = configureStore(initialState);
 
 if (process.env.NODE_ENV === 'development') {
   if (!window.__REDUX_DEVTOOLS_EXTENSION__) {
-    const DevToolsComponent = require('./utils/devtools.component').default;
+    const DevToolsComponent = require('./shared/utils/devtools.component').default;
     const devToolsRoot = window.document.createElement('div');
 
     window.document.body.appendChild(devToolsRoot);

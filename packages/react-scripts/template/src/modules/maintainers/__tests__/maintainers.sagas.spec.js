@@ -5,7 +5,7 @@ import { OK, BAD_REQUEST } from 'http-status-codes';
 
 import { watchMaintainers } from '../maintainers.sagas';
 import { MaintainersActions, MaintainersTypes } from '../maintainers.redux';
-import mockApi from '../../../utils/mockApi';
+import mockApi from '../../../shared/utils/mockApi';
 
 
 describe('Maintainers: sagas', () => {

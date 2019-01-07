@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'ramda';
 
 import { LanguageSwitcher } from './languageSwitcher.component';
-import { selectLocalesLanguage } from '../../modules/locales/locales.selectors';
+import { selectLocalesLanguage } from '../../../modules/locales/locales.selectors';
 
 
 const mapStateToProps = createStructuredSelector({

@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 
 import messages from './home.messages';
 import { MaintainerList } from './maintainerList/maintainerList.component';
-import { LanguageSwitcher } from '../../components/languageSwitcher';
+import { LanguageSwitcher } from '../../shared/components/languageSwitcher';
 import { Container, Logo } from './home.styles';
 import { H1 } from '../../theme/typography';
 

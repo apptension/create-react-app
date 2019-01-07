@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 
-import api from '../../services/api';
-import reportError from '../../utils/reportError';
+import api from '../../shared/services/api';
+import reportError from '../../shared/utils/reportError';
 import { MaintainersTypes, MaintainersActions } from './maintainers.redux';
 
 

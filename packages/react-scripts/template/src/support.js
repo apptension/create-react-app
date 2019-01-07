@@ -1,7 +1,7 @@
 require('es5-shim');
 require('es5-shim/es5-sham');
 //eslint-disable-next-line import/first
-import UnsupportedBrowserDetection from './utils/unsupportedBrowserDetection';
+import UnsupportedBrowserDetection from './shared/utils/unsupportedBrowserDetection';
 //eslint-disable-next-line import/first
 import { DEFAULT_LOCALE, translationMessages } from './i18n';
 //eslint-disable-next-line import/first

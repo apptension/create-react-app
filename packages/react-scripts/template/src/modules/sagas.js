@@ -1,6 +1,6 @@
 import { all, fork } from 'redux-saga/effects';
 
-import reportError from '../utils/reportError';
+import reportError from '../shared/utils/reportError';
 import { watchMaintainers } from './maintainers/maintainers.sagas';
 //<-- IMPORT MODULE SAGA -->
 

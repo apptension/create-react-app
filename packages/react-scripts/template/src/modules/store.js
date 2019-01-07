@@ -25,7 +25,7 @@ export default function configureStore(initialState = {}) {
     };
 
     Array.prototype.push.apply(enhancers, [
-      require('../utils/devtools.component').default.instrument(),
+      require('../shared/utils/devtools.component').default.instrument(),
       persistState(getDebugSessionKey(), (state) => fromJS(state)),
     ]);
   }

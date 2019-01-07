@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { Select } from './languageSwitcher.styles';
-import { appLocales } from '../../i18n';
+import { appLocales } from '../../../i18n';
 
 
 export class LanguageSwitcher extends PureComponent {

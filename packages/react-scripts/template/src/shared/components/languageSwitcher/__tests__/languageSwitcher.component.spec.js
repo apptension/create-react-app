@@ -5,7 +5,7 @@ import { spy } from 'sinon';
 
 import { LanguageSwitcher } from '../languageSwitcher.component';
 import { Select } from '../languageSwitcher.styles';
-import { DEFAULT_LOCALE } from '../../../i18n';
+import { DEFAULT_LOCALE } from '../../../../i18n';
 
 
 describe('LanguageSwitcher: Component', () => {
