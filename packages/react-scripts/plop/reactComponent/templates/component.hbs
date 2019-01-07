@@ -1,0 +1,24 @@
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
+import { compose } from 'ramda';
+
+import { Container } from './{{ camelCase name }}.styles';
+
+
+export class {{ pascalCase name }}Component extends PureComponent {
+  static propTypes = {
+  };
+
+  render() {
+    return (
+      <Container>
+        {{ pascalCase name }} component
+      </Container>
+    );
+  }
+}
+
+export const {{ pascalCase name }} = compose(
+  injectIntl,
+)({{ pascalCase name }}Component);

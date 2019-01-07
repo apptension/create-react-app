@@ -149,6 +149,7 @@ module.exports = function(webpackEnv) {
         require.resolve('react-dev-utils/webpackHotDevClient'),
       // Finally, this is your app's code:
       paths.appIndexJs,
+      paths.appSupportJs,
       // We include the app code last so that if there is a runtime error during
       // initialization, it doesn't blow up the WebpackDevServer client, and
       // changing JS code would still trigger a refresh.
@@ -313,7 +314,7 @@ module.exports = function(webpackEnv) {
                 eslintPath: require.resolve('eslint'),
                 // @remove-on-eject-begin
                 baseConfig: {
-                  extends: [require.resolve('eslint-config-react-app')],
+                  extends: [require.resolve('eslint-config-apptension-react')],
                   settings: { react: { version: '999.999.999' } },
                 },
                 ignore: false,
@@ -384,6 +385,7 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  'react-hot-loader/babel',
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
