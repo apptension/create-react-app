@@ -42,7 +42,7 @@ module.exports = (plop) => {
       type: 'modify',
       path: 'src/modules/reducers.js',
       pattern: /(\/\/<-- IMPORT MODULE REDUCER -->)/g,
-      template: 'import { reducer as {{ camelCase name }}Reducer } from \'./{{ camelCase name }}/{{ camelCase name }}.redux\';\n$1', //eslint-disable-line
+      template: 'import { reducer as {{ camelCase name }}Reducer } from \'./{{ camelCase name }}/{{ camelCase name }}.redux\';\n$1',
     }, {
       type: 'modify',
       path: 'src/modules/reducers.js',
@@ -52,7 +52,7 @@ module.exports = (plop) => {
       type: 'modify',
       path: 'src/modules/sagas.js',
       pattern: /(\/\/<-- IMPORT MODULE SAGA -->)/g,
-      template: 'import { watch{{ pascalCase name }} } from \'./{{ camelCase name }}/{{ camelCase name }}.sagas\';\n$1', //eslint-disable-line
+      template: 'import { watch{{ pascalCase name }} } from \'./{{ camelCase name }}/{{ camelCase name }}.sagas\';\n$1',
     }, {
       type: 'modify',
       path: 'src/modules/sagas.js',

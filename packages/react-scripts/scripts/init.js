@@ -95,8 +95,8 @@ module.exports = function(
     build: 'react-scripts build',
     test: 'react-scripts test',
     eject: 'react-scripts eject',
-    'extract-intl': 'react-scripts extractIntl en',
-    lint: "eslint --ignore-path .gitignore --ignore-pattern 'config/*' --ignore-pattern 'scripts/*' .",
+    'extract-intl': 'react-scripts extractIntl en pl',
+    lint: "eslint .",
   };
 
   // Setup the browsers list
@@ -109,9 +109,7 @@ module.exports = function(
     }
   };
   appPackage['lint-staged'] = {
-    "**/*.{js,jsx}": [
-      "eslint --ignore-path .gitignore --ignore-pattern 'config/*' --ignore-pattern 'scripts/*'"
-    ]
+    "**/*.{js,jsx}": ["eslint"]
   };
 
   fs.writeFileSync(
