@@ -52,10 +52,6 @@ function tryGitInit(appPath) {
     execSync('git init', { stdio: 'ignore' });
     didInit = true;
 
-    execSync('git add -A', { stdio: 'ignore' });
-    execSync('git commit -m "Initial commit from Create React App"', {
-      stdio: 'ignore',
-    });
     return true;
   } catch (e) {
     if (didInit) {
@@ -100,10 +96,23 @@ module.exports = function(
     test: 'react-scripts test',
     eject: 'react-scripts eject',
     'extract-intl': 'react-scripts extractIntl en',
+    lint: "eslint --ignore-path .gitignore --ignore-pattern 'config/*' --ignore-pattern 'scripts/*' .",
   };
 
   // Setup the browsers list
   appPackage.browserslist = defaultBrowsers;
+
+  // Setup lint-staged on pre-commit
+  appPackage.husky = {
+    hooks: {
+      "pre-commit": 'lint-staged'
+    }
+  };
+  appPackage['lint-staged'] = {
+    "**/*.{js,jsx}": [
+      "eslint --ignore-path .gitignore --ignore-pattern 'config/*' --ignore-pattern 'scripts/*'"
+    ]
+  };
 
   fs.writeFileSync(
     path.join(appPath, 'package.json'),
@@ -178,6 +187,15 @@ module.exports = function(
     }
   }
 
+  if (useTypeScript) {
+    verifyTypeScriptSetup();
+  }
+
+  if (tryGitInit(appPath)) {
+    console.log();
+    console.log('Initialized a git repository.');
+  }
+
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(
     appPath,
@@ -200,16 +218,6 @@ module.exports = function(
   if (proc.status !== 0) {
     console.error(`\`${command} ${templateArgs.join(' ')}\` failed`);
     return;
-  }
-
-
-  if (useTypeScript) {
-    verifyTypeScriptSetup();
-  }
-
-  if (tryGitInit(appPath)) {
-    console.log();
-    console.log('Initialized a git repository.');
   }
 
   // Display the most elegant way to cd.
