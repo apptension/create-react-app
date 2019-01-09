@@ -131,7 +131,7 @@ module.exports = function(webpackEnv) {
       ? shouldUseSourceMap
         ? 'source-map'
         : false
-      : isEnvDevelopment && 'cheap-module-source-map',
+      : isEnvDevelopment && 'eval-source-map',
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     entry: [
@@ -149,6 +149,7 @@ module.exports = function(webpackEnv) {
         require.resolve('react-dev-utils/webpackHotDevClient'),
       // Finally, this is your app's code:
       paths.appIndexJs,
+      paths.appSupportJs,
       // We include the app code last so that if there is a runtime error during
       // initialization, it doesn't blow up the WebpackDevServer client, and
       // changing JS code would still trigger a refresh.
@@ -249,7 +250,7 @@ module.exports = function(webpackEnv) {
         chunks: 'all',
         name: false,
       },
-      // Keep the runtime chunk seperated to enable long term caching
+      // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
       runtimeChunk: true,
     },
@@ -313,8 +314,7 @@ module.exports = function(webpackEnv) {
                 eslintPath: require.resolve('eslint'),
                 // @remove-on-eject-begin
                 baseConfig: {
-                  extends: [require.resolve('eslint-config-react-app')],
-                  settings: { react: { version: '999.999.999' } },
+                  extends: [require.resolve('eslint-config-apptension-react')],
                 },
                 ignore: false,
                 useEslintrc: false,
@@ -384,6 +384,7 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  'react-hot-loader/babel',
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -635,8 +636,8 @@ module.exports = function(webpackEnv) {
             '!**/*.json',
             '!**/__tests__/**',
             '!**/?(*.)(spec|test).*',
-            '!src/setupProxy.js',
-            '!src/setupTests.*',
+            '!**/src/setupProxy.*',
+            '!**/src/setupTests.*',
           ],
           watch: paths.appSrc,
           silent: true,

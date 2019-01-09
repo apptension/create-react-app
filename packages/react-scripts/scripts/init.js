@@ -52,10 +52,6 @@ function tryGitInit(appPath) {
     execSync('git init', { stdio: 'ignore' });
     didInit = true;
 
-    execSync('git add -A', { stdio: 'ignore' });
-    execSync('git commit -m "Initial commit from Create React App"', {
-      stdio: 'ignore',
-    });
     return true;
   } catch (e) {
     if (didInit) {
@@ -99,15 +95,22 @@ module.exports = function(
     build: 'react-scripts build',
     test: 'react-scripts test',
     eject: 'react-scripts eject',
-  };
-
-  // Setup the eslint config
-  appPackage.eslintConfig = {
-    extends: 'react-app',
+    'extract-intl': 'react-scripts extractIntl en pl',
+    lint: "eslint .",
   };
 
   // Setup the browsers list
   appPackage.browserslist = defaultBrowsers;
+
+  // Setup lint-staged on pre-commit
+  appPackage.husky = {
+    hooks: {
+      "pre-commit": 'lint-staged'
+    }
+  };
+  appPackage['lint-staged'] = {
+    "**/*.{js,jsx}": ["eslint"]
+  };
 
   fs.writeFileSync(
     path.join(appPath, 'package.json'),
@@ -155,31 +158,18 @@ module.exports = function(
   }
 
   let command;
-  let args;
+  let args, templateArgs;
 
   if (useYarn) {
     command = 'yarnpkg';
     args = ['add'];
+    templateArgs = ['add'];
   } else {
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
+    templateArgs = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
   args.push('react', 'react-dom');
-
-  // Install additional template dependencies, if present
-  const templateDependenciesPath = path.join(
-    appPath,
-    '.template.dependencies.json'
-  );
-  if (fs.existsSync(templateDependenciesPath)) {
-    const templateDependencies = require(templateDependenciesPath).dependencies;
-    args = args.concat(
-      Object.keys(templateDependencies).map(key => {
-        return `${key}@${templateDependencies[key]}`;
-      })
-    );
-    fs.unlinkSync(templateDependenciesPath);
-  }
 
   // Install react and react-dom for backward compatibility with old CRA cli
   // which doesn't install react and react-dom along with react-scripts
@@ -202,6 +192,30 @@ module.exports = function(
   if (tryGitInit(appPath)) {
     console.log();
     console.log('Initialized a git repository.');
+  }
+
+  // Install additional template dependencies, if present
+  const templateDependenciesPath = path.join(
+    appPath,
+    '.template.dependencies.json'
+  );
+  if (fs.existsSync(templateDependenciesPath)) {
+    const templateDependencies = require(templateDependenciesPath).dependencies;
+    templateArgs = templateArgs.concat(
+      Object.keys(templateDependencies).map(key => {
+        return `${key}@${templateDependencies[key]}`;
+      })
+    );
+    fs.unlinkSync(templateDependenciesPath);
+  }
+  console.log();
+  console.log(`Installing additional ${chalk.cyan('template dependecies')}...`);
+  console.log();
+
+  const proc = spawn.sync(command, templateArgs, { stdio: 'inherit' });
+  if (proc.status !== 0) {
+    console.error(`\`${command} ${templateArgs.join(' ')}\` failed`);
+    return;
   }
 
   // Display the most elegant way to cd.

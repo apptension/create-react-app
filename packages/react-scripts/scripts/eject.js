@@ -38,6 +38,14 @@ function getGitStatus() {
   }
 }
 
+console.log(
+  chalk.cyan.bold(
+    'NOTE: Create React App 2 supports TypeScript, Sass, CSS Modules and more without ejecting: ' +
+      'https://reactjs.org/blog/2018/10/01/create-react-app-v2.html'
+  )
+);
+console.log();
+
 inquirer
   .prompt({
     type: 'confirm',
@@ -87,7 +95,11 @@ inquirer
       }
     }
 
-    const folders = ['config', 'config/jest', 'scripts'];
+    const folders = [
+      'config', 'config/jest',
+      'plop', 'plop/reactComponent', 'plop/reduxContainer', 'plop/reduxModule',
+      'scripts',
+    ];
 
     // Make shallow array of files paths
     const files = folders.reduce((files, folder) => {
@@ -142,6 +154,16 @@ inquirer
       console.log(`  Adding ${cyan(file.replace(ownPath, ''))} to the project`);
       fs.writeFileSync(file.replace(ownPath, appPath), content);
     });
+    console.log();
+
+    // Replace plopfile imports
+    console.log(cyan('Replacing plopfile imports'));
+    const plopFile = path.join(appPath, 'plopfile.js');
+
+    let content = fs.readFileSync(plopFile, 'utf8');
+    content = content.replace(/@apptension\/react-scripts/gm, '.');
+
+    fs.writeFileSync(plopFile, content);
     console.log();
 
     const ownPackage = require(path.join(ownPath, 'package.json'));
@@ -209,12 +231,6 @@ inquirer
     console.log(`  Adding ${cyan('Babel')} preset`);
     appPackage.babel = {
       presets: ['react-app'],
-    };
-
-    // Add ESlint config
-    console.log(`  Adding ${cyan('ESLint')} configuration`);
-    appPackage.eslintConfig = {
-      extends: 'react-app',
     };
 
     fs.writeFileSync(
