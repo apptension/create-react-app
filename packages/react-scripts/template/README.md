@@ -1,43 +1,51 @@
-# Create React App (by Apptension) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/facebook/create-react-app/pulls) 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[create-react-app](https://github.com/facebook/create-react-app) scripts customised for Apptension projects.
+## Available Scripts
 
-### Quick start
-    
-1. Run create-react-app with Apptension's scripts:
-  ```shell
-  $ npx create-react-app [app-name] --scripts-version @apptension/react-scripts
-  ```
+In the project directory, you can run:
 
-2. Start application:
+### `yarn start`
 
-  ```shell
-  $ yarn start
-  ```
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Documentation
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-Most features are covered by [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started) documentation so don't forget to check it out first!
+### `yarn test`
 
-## Additional features
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-#### Messages
+### `yarn build`
 
-```Shell
-yarn extract-intl language1, language2, [...]
-```
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+### `yarn extract-intl language1, language2, [...]`
 
 Automatically generates `.json` files with messages gathered from application.
 
-#### Linting
-
-```Shell
-yarn lint
-```
+### `yarn lint`
 
 Lints your JavaScript.
 
-#### Code generation
+### `yarn plop`
 
 Generate Redux module (reducer, saga, selectors, action types, action creators, tests):
 ```Shell
@@ -54,6 +62,7 @@ Generate React component in specified path
 yarn plop component
 ```
 
-## License
+## Learn More
 
-This project is licensed under the MIT license, Copyright (c) 2017 Apptension. For more information see LICENSE.md.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
