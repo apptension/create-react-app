@@ -1,6 +1,7 @@
 import UAParser from 'ua-parser-js';
 import semverCompare from 'semver-compare';
 
+
 const DEFAULT_SUPPORTED_BROWSERS_CONFIG = {
   desktop: [{
     browser: 'firefox', minversion: 41,

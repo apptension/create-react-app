@@ -1,5 +1,6 @@
 import { always, complement, equals, ifElse, isNil } from 'ramda';
 
+
 export const renderWhen = (pred, fn) => ifElse(pred, fn, always(null));
 
 export const renderWhenNotNil = (fn) => renderWhen(complement(isNil), fn);

@@ -5,6 +5,7 @@ import plLocaleData from 'react-intl/locale-data/pl';
 import enTranslationMessages from './translations/en.json';
 import plTranslationMessages from './translations/pl.json';
 
+
 addLocaleData(enLocaleData);
 addLocaleData(plLocaleData);
 
