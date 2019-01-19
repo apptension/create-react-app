@@ -18,6 +18,10 @@ module.exports = (plop) => {
     }],
     actions: [{
       type: 'add',
+      path: `${containerDirectory}/index.js`,
+      templateFile: path.join(templatesPath, 'index.hbs'),
+    }, {
+      type: 'add',
       path: `${containerDirectory}/{{ camelCase name }}.component.js`,
       templateFile: path.join(templatesPath, 'component.hbs'),
     }, {
