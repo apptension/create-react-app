@@ -7,9 +7,8 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'ramda';
 
 import { Home } from './home.component';
-import { MaintainersActions } from '../../modules/maintainers/maintainers.redux';
-import { selectMaintainersItems } from '../../modules/maintainers/maintainers.selectors';
-import { selectLocalesLanguage } from '../../modules/locales/locales.selectors';
+import { MaintainersActions, selectMaintainersItems } from '../../modules/maintainers';
+import { selectLocalesLanguage } from '../../modules/locales';
 
 
 const mapStateToProps = createStructuredSelector({

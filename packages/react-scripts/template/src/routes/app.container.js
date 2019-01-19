@@ -6,8 +6,7 @@ import { hot } from 'react-hot-loader';
 import { compose } from 'ramda';
 
 import { App } from './app.component';
-import { selectLocalesLanguage } from '../modules/locales/locales.selectors';
-import { LocalesActions } from '../modules/locales/locales.redux';
+import { LocalesActions, selectLocalesLanguage } from '../modules/locales';
 
 
 const mapStateToProps = createStructuredSelector({
