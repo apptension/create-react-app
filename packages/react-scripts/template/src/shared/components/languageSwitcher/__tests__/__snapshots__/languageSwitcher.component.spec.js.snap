@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LanguageSwitcher: Component should render LanguageSwitcher root 1`] = `
+exports[`LanguageSwitcher: Component should render correctly 1`] = `
 <styled.select
   onChange={[Function]}
   value="en"

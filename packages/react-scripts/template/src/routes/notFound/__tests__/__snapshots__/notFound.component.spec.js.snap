@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotFound: Component should render NotFound root 1`] = `
+exports[`NotFound: Component should render correctly 1`] = `
 <styled.div>
   <HelmetWrapper
     defer={true}

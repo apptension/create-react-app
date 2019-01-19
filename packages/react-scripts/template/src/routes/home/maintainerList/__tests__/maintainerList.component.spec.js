@@ -17,7 +17,7 @@ describe('MaintainerList: Component', () => {
     <MaintainerList {...defaultProps} {...props} />
   );
 
-  it('should render MaintainerList root', () => {
+  it('should render correctly', () => {
     const wrapper = shallow(component());
     global.expect(wrapper).toMatchSnapshot();
   });

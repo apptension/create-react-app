@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MaintainerList: Component should render MaintainerList root 1`] = `
+exports[`MaintainerList: Component should render correctly 1`] = `
 <styled.div>
   <styled.h2>
     <FormattedMessage

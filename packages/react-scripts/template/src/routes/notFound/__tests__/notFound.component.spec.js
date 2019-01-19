@@ -13,7 +13,7 @@ describe('NotFound: Component', () => {
     <NotFound {...defaultProps} {...props} />
   );
 
-  it('should render NotFound root', () => {
+  it('should render correctly', () => {
     const wrapper = shallow(component());
     global.expect(wrapper).toMatchSnapshot();
   });

@@ -19,7 +19,7 @@ describe('LanguageSwitcher: Component', () => {
     <LanguageSwitcher {...defaultProps} {...props} />
   );
 
-  it('should render LanguageSwitcher root', () => {
+  it('should render correctly', () => {
     const wrapper = shallow(component());
     global.expect(wrapper).toMatchSnapshot();
   });
