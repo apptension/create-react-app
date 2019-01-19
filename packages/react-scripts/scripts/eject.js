@@ -97,7 +97,10 @@ inquirer
 
     const folders = [
       'config', 'config/jest',
-      'plop', 'plop/reactComponent', 'plop/reduxContainer', 'plop/reduxModule',
+      'plop',
+      'plop/reactComponent', 'plop/reactComponent/templates', 'plop/reactComponent/templates/__tests__',
+      'plop/reduxContainer', 'plop/reduxContainer/templates', 'plop/reduxContainer/templates/__tests__',
+      'plop/reduxModule', 'plop/reduxModule/templates', 'plop/reduxModule/templates/__tests__',
       'scripts',
     ];
 
