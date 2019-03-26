@@ -8,6 +8,7 @@ import { LanguageSwitcher } from '../../shared/components/languageSwitcher';
 import { Container, Logo } from './home.styles';
 import { H1 } from '../../theme/typography';
 
+
 export class Home extends PureComponent {
   static propTypes = {
     intl: PropTypes.object.isRequired,

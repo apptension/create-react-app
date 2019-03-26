@@ -9,6 +9,7 @@ import { compose } from 'ramda';
 import { Home } from './home.component';
 import { selectLocalesLanguage } from '../../modules/locales';
 
+
 const mapStateToProps = createStructuredSelector({
   language: selectLocalesLanguage,
 });
