@@ -1,11 +1,11 @@
 import { expect } from 'chai';
-import { fromJS } from 'immutable';
+import Immutable from 'seamless-immutable';
 
 import { select{{ pascalCase name }}Domain } from '../{{ camelCase name }}.selectors';
 
 
 describe('{{ pascalCase name }}: selectors', () => {
-  const state = fromJS({
+  const state = Immutable({
     {{ camelCase name }}: {
 
     },
@@ -13,7 +13,7 @@ describe('{{ pascalCase name }}: selectors', () => {
 
   describe('select{{ pascalCase name }}Domain', () => {
     it('should select a domain', () => {
-      expect(select{{ pascalCase name }}Domain(state)).to.equal(state.get('{{ camelCase name }}'));
+      expect(select{{ pascalCase name }}Domain(state)).to.equal(state.{{ camelCase name }}));
     });
   });
 });

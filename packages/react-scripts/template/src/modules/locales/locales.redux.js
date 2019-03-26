@@ -1,4 +1,4 @@
-import { Record } from 'immutable';
+import Immutable from 'seamless-immutable';
 import { createReducer, createActions } from 'reduxsauce';
 
 
@@ -6,11 +6,9 @@ export const { Types: LocalesTypes, Creators: LocalesActions } = createActions({
   setLanguage: ['language'],
 }, { prefix: 'LOCALES_' });
 
-const LocalesRecord = new Record({
+export const INITIAL_STATE = new Immutable({
   language: null,
 });
-
-export const INITIAL_STATE = new LocalesRecord({});
 
 export const setLanguageHandler = (state = INITIAL_STATE, action) => state.set('language', action.language);
 

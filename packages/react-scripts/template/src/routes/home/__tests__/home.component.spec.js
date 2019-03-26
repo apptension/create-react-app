@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import { spy } from 'sinon';
-import { fromJS } from 'immutable';
+import Immutable from 'seamless-immutable';
 
 import { Home } from '../home.component';
 import { DEFAULT_LOCALE, LOCALES } from '../../../i18n';
@@ -10,7 +10,7 @@ import { DEFAULT_LOCALE, LOCALES } from '../../../i18n';
 
 describe('Home: Component', () => {
   const defaultProps = {
-    items: fromJS([{ id: 1 }, { id: 2 }, { id: 3 }]),
+    items: Immutable([{ id: 1 }, { id: 2 }, { id: 3 }]),
     intl: { formatMessage: ({ id }) => id },
     language: DEFAULT_LOCALE,
     fetchMaintainers: () => {},

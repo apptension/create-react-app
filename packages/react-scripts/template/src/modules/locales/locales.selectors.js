@@ -1,8 +1,9 @@
+import { prop } from 'ramda';
 import { createSelector } from 'reselect';
 
 
-const selectLocalesDomain = state => state.get('locales');
+const selectLocalesDomain = prop('locales');
 
 export const selectLocalesLanguage = createSelector(
-  selectLocalesDomain, state => state.get('language')
+  selectLocalesDomain, prop('language')
 );

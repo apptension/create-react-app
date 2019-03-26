@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux-immutable';
+import { combineReducers } from 'redux';
 
 import { reducer as localesReducer } from './locales/locales.redux';
 //<-- IMPORT MODULE REDUCER -->
