@@ -17,7 +17,7 @@ process.on('unhandledRejection', err => {
 const fs = require('fs-extra');
 const path = require('path');
 const execSync = require('child_process').execSync;
-const chalk = require('chalk');
+const chalk = require('react-dev-utils/chalk');
 const paths = require('../config/paths');
 const createJestConfig = require('./utils/createJestConfig');
 const inquirer = require('react-dev-utils/inquirer');
@@ -35,6 +35,22 @@ function getGitStatus() {
     return stdout.trim();
   } catch (e) {
     return '';
+  }
+}
+
+function tryGitAdd(appPath) {
+  try {
+    spawnSync(
+      'git',
+      ['add', path.join(appPath, 'config'), path.join(appPath, 'scripts')],
+      {
+        stdio: 'inherit',
+      }
+    );
+
+    return true;
+  } catch (e) {
+    return false;
   }
 }
 
@@ -96,11 +112,18 @@ inquirer
     }
 
     const folders = [
-      'config', 'config/jest',
+      'config',
+      'config/jest',
       'plop',
-      'plop/reactComponent', 'plop/reactComponent/templates', 'plop/reactComponent/templates/__tests__',
-      'plop/reduxContainer', 'plop/reduxContainer/templates', 'plop/reduxContainer/templates/__tests__',
-      'plop/reduxModule', 'plop/reduxModule/templates', 'plop/reduxModule/templates/__tests__',
+      'plop/reactComponent',
+      'plop/reactComponent/templates',
+      'plop/reactComponent/templates/__tests__',
+      'plop/reduxContainer',
+      'plop/reduxContainer/templates',
+      'plop/reduxContainer/templates/__tests__',
+      'plop/reduxModule',
+      'plop/reduxModule/templates',
+      'plop/reduxModule/templates/__tests__',
       'scripts',
     ];
 
@@ -320,6 +343,11 @@ inquirer
     }
     console.log(green('Ejected successfully!'));
     console.log();
+
+    if (tryGitAdd(appPath)) {
+      console.log(cyan('Staged ejected files for commit.'));
+      console.log();
+    }
 
     console.log(
       green('Please consider sharing why you ejected in this survey:')
