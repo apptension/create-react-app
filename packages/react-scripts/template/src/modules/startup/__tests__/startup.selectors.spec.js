@@ -13,7 +13,7 @@ describe('Startup: selectors', () => {
 
   describe('selectStartupDomain', () => {
     it('should select a domain', () => {
-      expect(selectStartupDomain(state)).to.equal(state.startup));
+      expect(selectStartupDomain(state)).to.equal(state.startup);
     });
   });
 });

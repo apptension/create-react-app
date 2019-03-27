@@ -1,8 +1,7 @@
-import SagaTester from 'redux-saga-tester';
+import { expectSaga } from 'redux-saga-test-plan';
 import { expect } from 'chai';
 import Immutable from 'seamless-immutable';
 
-import mockApi from '../../../shared/utils/mockApi';
 import { watch{{ pascalCase name }} } from '../{{ camelCase name }}.sagas';
 import {
   {{ pascalCase name }}Actions,
@@ -13,18 +12,12 @@ import {
 describe('{{ pascalCase name }}: sagas', () => {
   const defaultState = Immutable({});
 
-  const getSagaTester = (initialState = {}) => {
-    const sagaTester = new SagaTester({
-      initialState: defaultState.mergeDeep(initialState),
-    });
-    sagaTester.start(watch{{ pascalCase name }});
-    return sagaTester;
-  };
-
-  it('should implement a test', () => {
-    const sagaTester = getSagaTester();
-
-    sagaTester.dispatch({{ pascalCase name }}Actions.noop());
+  it('should implement a test', async () => {
+    await expectSaga(watchStartup)
+      .withState(defaultState)
+      .put({{ pascalCase name }}Actions.noop())
+      .dispatch(StartupActions.startup())
+      .run();
 
     expect(sagaTester.getCalledActions()).to.deep.equal([{{ pascalCase name }}Actions.noop()]);
   });

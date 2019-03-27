@@ -11,6 +11,7 @@ describe('App: Component', () => {
   const children = <div className="app__children">Children</div>;
   const defaultProps = {
     setLanguage: () => {},
+    startup: () => {},
     language: DEFAULT_LOCALE,
     match: { params: { lang: LOCALES.POLISH } },
   };
@@ -56,5 +57,12 @@ describe('App: Component', () => {
 
     expect(setLanguage).to.have.been.calledOnce;
     expect(setLanguage).to.have.been.calledWith(LOCALES.ENGLISH);
+  });
+  
+  it('should call startup on mount', () => {
+    const startup = spy();
+    shallow(component({ startup }));
+
+    expect(startup).to.have.been.calledOnce;
   });
 });
