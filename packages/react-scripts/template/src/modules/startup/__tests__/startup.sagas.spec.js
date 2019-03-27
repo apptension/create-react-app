@@ -4,7 +4,6 @@ import Immutable from 'seamless-immutable';
 import { watchStartup } from '../startup.sagas';
 import { StartupActions } from '../startup.redux';
 
-
 describe('Startup: sagas', () => {
   const defaultState = Immutable({});
 

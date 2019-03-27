@@ -9,7 +9,6 @@ import chaiEnzyme from 'chai-enzyme';
 import sinonChai from 'sinon-chai';
 import chaiJestDiff from 'chai-jest-diff';
 
-
 Enzyme.configure({ adapter: new Adapter() });
 
 chai.use(chaiEnzyme());

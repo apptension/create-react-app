@@ -3,7 +3,6 @@ import Immutable from 'seamless-immutable';
 
 import { selectLocalesLanguage } from '../locales.selectors';
 
-
 describe('Locales: selectors', () => {
   const language = 'en';
 

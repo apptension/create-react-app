@@ -6,7 +6,6 @@ import { spy } from 'sinon';
 import { DEFAULT_LOCALE, LOCALES } from '../../i18n';
 import { App } from '../app.component';
 
-
 describe('App: Component', () => {
   const children = <div className="app__children">Children</div>;
   const defaultProps = {
@@ -16,7 +15,7 @@ describe('App: Component', () => {
     match: { params: { lang: LOCALES.POLISH } },
   };
 
-  const component = (props) => (
+  const component = props => (
     <App {...defaultProps} {...props}>
       {children}
     </App>

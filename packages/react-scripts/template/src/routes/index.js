@@ -8,7 +8,6 @@ import { DEFAULT_LOCALE, appLocales, translationMessages } from '../i18n';
 import { Home } from './home';
 import { NotFound } from './notFound';
 
-
 export const ROUTES = {
   home: '/',
   notFound: '/404',
@@ -42,10 +41,7 @@ export default class RootContainer extends Component {
 
         <Route path={`/:lang(${appLocales.join('|')})`} component={MatchedLanguageComponent} />
 
-        <IntlProvider
-          locale={DEFAULT_LOCALE}
-          messages={translationMessages[DEFAULT_LOCALE]}
-        >
+        <IntlProvider locale={DEFAULT_LOCALE} messages={translationMessages[DEFAULT_LOCALE]}>
           <Route component={NotFound} />
         </IntlProvider>
       </Switch>

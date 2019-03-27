@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { fonts, colors } from './styled';
 
-
 export const H1 = styled.h1`
   font-family: ${fonts.arial};
   font-weight: bold;

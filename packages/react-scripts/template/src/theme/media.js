@@ -1,6 +1,5 @@
 import { css } from 'styled-components';
 
-
 export const sizes = {
   desktopFull: 1920,
   desktopWide: 1440,

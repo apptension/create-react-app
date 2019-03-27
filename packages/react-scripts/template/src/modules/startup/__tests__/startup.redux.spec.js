@@ -1,10 +1,7 @@
 import { expect } from 'chai';
 import Immutable from 'seamless-immutable';
 
-import {
-  reducer as startupReducer,
-} from '../startup.redux';
-
+import { reducer as startupReducer } from '../startup.redux';
 
 describe('Startup: redux', () => {
   const state = Immutable({});

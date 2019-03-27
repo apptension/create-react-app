@@ -8,7 +8,7 @@ export default function* rootSaga() {
   try {
     yield all([
       fork(watchStartup),
-    //<-- INJECT MODULE SAGA -->
+      //<-- INJECT MODULE SAGA -->
     ]);
   } catch (e) {
     yield reportError(e);

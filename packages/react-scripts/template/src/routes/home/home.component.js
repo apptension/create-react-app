@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+
 import { FormattedMessage } from 'react-intl';
 
 import messages from './home.messages';
 import { LanguageSwitcher } from '../../shared/components/languageSwitcher';
 import { Container, Logo } from './home.styles';
 import { H1 } from '../../theme/typography';
-
 
 export class Home extends PureComponent {
   static propTypes = {

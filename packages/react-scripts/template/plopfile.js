@@ -4,8 +4,7 @@ const addReduxModuleGenerator = require('@apptension/react-scripts/plop/reduxMod
 const addReduxContainerGenerator = require('@apptension/react-scripts/plop/reduxContainer');
 const addReactComponentGenerator = require('@apptension/react-scripts/plop/reactComponent');
 
-
-module.exports = function (plop) {
+module.exports = function(plop) {
   plop.setPrompt('directory', promptDirectory);
 
   addReduxModuleGenerator(plop);

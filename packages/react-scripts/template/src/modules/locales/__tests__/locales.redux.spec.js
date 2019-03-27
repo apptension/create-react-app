@@ -3,7 +3,6 @@ import Immutable from 'seamless-immutable';
 
 import { reducer as localesReducer, LocalesActions, LocalesTypes } from '../locales.redux';
 
-
 describe('Locales: redux', () => {
   const state = Immutable({
     language: null,

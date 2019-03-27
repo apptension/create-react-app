@@ -3,12 +3,9 @@ import Immutable from 'seamless-immutable';
 
 import { selectStartupDomain } from '../startup.selectors';
 
-
 describe('Startup: selectors', () => {
   const state = Immutable({
-    startup: {
-
-    },
+    startup: {},
   });
 
   describe('selectStartupDomain', () => {

@@ -1,10 +1,12 @@
 import Immutable from 'seamless-immutable';
 import { createReducer, createActions } from 'reduxsauce';
 
-
-export const { Types: LocalesTypes, Creators: LocalesActions } = createActions({
-  setLanguage: ['language'],
-}, { prefix: 'LOCALES_' });
+export const { Types: LocalesTypes, Creators: LocalesActions } = createActions(
+  {
+    setLanguage: ['language'],
+  },
+  { prefix: 'LOCALES_' }
+);
 
 export const INITIAL_STATE = new Immutable({
   language: null,
@@ -17,4 +19,3 @@ export const HANDLERS = {
 };
 
 export const reducer = createReducer(INITIAL_STATE, HANDLERS);
-
