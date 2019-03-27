@@ -96,7 +96,9 @@ module.exports = function(
     test: 'react-scripts test',
     eject: 'react-scripts eject',
     'extract-intl': 'react-scripts extractIntl en pl',
-    lint: 'eslint .',
+    lint: 'yarn run lint:js && yarn run lint:css',
+    "lint:css":"stylelint './src/**/*.js'",
+    "lint:js":"eslint .",
   };
 
   // Setup the browsers list

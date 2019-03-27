@@ -18,7 +18,8 @@
           "Map",
           "Record",
           "OrderedMap",
-          "OrderedSet"
+          "OrderedSet",
+          "Immutable"
         ]
       }
     ],
@@ -27,7 +28,8 @@
       {
         "capIsNewExceptions": [
           "List",
-          "Map"
+          "Map",
+          "Immutable"
         ]
       }
     ],

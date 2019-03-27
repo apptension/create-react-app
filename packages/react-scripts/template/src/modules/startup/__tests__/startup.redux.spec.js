@@ -3,8 +3,6 @@ import Immutable from 'seamless-immutable';
 
 import {
   reducer as startupReducer,
-  StartupActions,
-  StartupTypes,
 } from '../startup.redux';
 
 

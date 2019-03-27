@@ -322,6 +322,9 @@ module.exports = function(webpackEnv) {
               },
               loader: require.resolve('eslint-loader'),
             },
+            {
+              loader: 'stylelint-custom-processor-loader',
+            }
           ],
           include: paths.appSrc,
         },

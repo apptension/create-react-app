@@ -58,7 +58,7 @@ describe('App: Component', () => {
     expect(setLanguage).to.have.been.calledOnce;
     expect(setLanguage).to.have.been.calledWith(LOCALES.ENGLISH);
   });
-  
+
   it('should call startup on mount', () => {
     const startup = spy();
     shallow(component({ startup }));
