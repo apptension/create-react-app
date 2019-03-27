@@ -14,10 +14,12 @@ export class App extends PureComponent {
     children: PropTypes.node,
     match: PropTypes.object.isRequired,
     setLanguage: PropTypes.func.isRequired,
+    startup: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     this.props.setLanguage(this.getLanguage(this.props));
+    this.props.startup();
   }
 
   componentDidUpdate(prevProps) {
