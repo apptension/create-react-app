@@ -316,8 +316,8 @@ module.exports = function(webpackEnv) {
                 baseConfig: {
                   extends: [require.resolve('@apptension/eslint-config-react')],
                 },
-                ignore: false,
-                useEslintrc: false,
+                ignore: true,
+                useEslintrc: true,
                 // @remove-on-eject-end
               },
               loader: require.resolve('eslint-loader'),
