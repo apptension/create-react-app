@@ -8,7 +8,6 @@ exports[`App: Component should render App when language is set 1`] = `
   messages={
     Object {
       "app.pageTitle": "Apptension Boilerplate",
-      "home.maintainerList.title": "Maintainers",
       "home.pageTitle": "Homepage",
       "home.welcome": "Hello World!",
       "notFound.pageTitle": "Not found",

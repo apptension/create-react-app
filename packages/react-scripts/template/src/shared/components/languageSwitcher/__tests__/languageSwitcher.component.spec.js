@@ -7,7 +7,6 @@ import { LanguageSwitcher } from '../languageSwitcher.component';
 import { Select } from '../languageSwitcher.styles';
 import { DEFAULT_LOCALE } from '../../../../i18n';
 
-
 describe('LanguageSwitcher: Component', () => {
   const defaultProps = {
     language: DEFAULT_LOCALE,
@@ -15,9 +14,7 @@ describe('LanguageSwitcher: Component', () => {
     history: { push: () => {} },
   };
 
-  const component = (props) => (
-    <LanguageSwitcher {...defaultProps} {...props} />
-  );
+  const component = props => <LanguageSwitcher {...defaultProps} {...props} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(component());

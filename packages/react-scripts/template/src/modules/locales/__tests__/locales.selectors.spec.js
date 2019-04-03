@@ -1,13 +1,12 @@
 import { expect } from 'chai';
-import { fromJS } from 'immutable';
+import Immutable from 'seamless-immutable';
 
 import { selectLocalesLanguage } from '../locales.selectors';
-
 
 describe('Locales: selectors', () => {
   const language = 'en';
 
-  const mockedState = fromJS({
+  const mockedState = Immutable({
     locales: {
       language,
     },

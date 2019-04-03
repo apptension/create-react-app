@@ -7,17 +7,18 @@ import { translationMessages, DEFAULT_LOCALE } from '../i18n';
 import { GlobalStyle } from '../theme/global';
 import messages from './app.messages';
 
-
 export class App extends PureComponent {
   static propTypes = {
     language: PropTypes.string,
     children: PropTypes.node,
     match: PropTypes.object.isRequired,
     setLanguage: PropTypes.func.isRequired,
+    startup: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     this.props.setLanguage(this.getLanguage(this.props));
+    this.props.startup();
   }
 
   componentDidUpdate(prevProps) {
@@ -26,7 +27,7 @@ export class App extends PureComponent {
     }
   }
 
-  getLanguage = (props) => props.match.params.lang || DEFAULT_LOCALE;
+  getLanguage = props => props.match.params.lang || DEFAULT_LOCALE;
 
   render() {
     if (!this.props.language) {
@@ -34,19 +35,10 @@ export class App extends PureComponent {
     }
 
     return (
-      <IntlProvider
-        locale={this.props.language}
-        messages={translationMessages[this.props.language]}
-      >
+      <IntlProvider locale={this.props.language} messages={translationMessages[this.props.language]}>
         <Fragment>
-
           <FormattedMessage {...messages.pageTitle}>
-            {pageTitle => (
-              <Helmet
-                titleTemplate={`%s - ${pageTitle}`}
-                defaultTitle={pageTitle}
-              />
-            )}
+            {pageTitle => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
           </FormattedMessage>
 
           <GlobalStyle />

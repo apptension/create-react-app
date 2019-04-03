@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux-immutable';
+import { combineReducers } from 'redux';
 
 import { reducer as localesReducer } from './locales/locales.redux';
-import { reducer as maintainersReducer } from './maintainers/maintainers.redux';
+import { reducer as startupReducer } from './startup/startup.redux';
 //<-- IMPORT MODULE REDUCER -->
 
 export default function createReducer() {
   return combineReducers({
-    maintainers: maintainersReducer,
     locales: localesReducer,
+    startup: startupReducer,
     //<-- INJECT MODULE REDUCER -->
   });
 }

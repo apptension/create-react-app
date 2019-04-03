@@ -5,7 +5,6 @@ import plLocaleData from 'react-intl/locale-data/pl';
 import enTranslationMessages from './translations/en.json';
 import plTranslationMessages from './translations/pl.json';
 
-
 addLocaleData(enLocaleData);
 addLocaleData(plLocaleData);
 
@@ -16,19 +15,14 @@ export const LOCALES = {
 
 export const DEFAULT_LOCALE = LOCALES.ENGLISH;
 
-export const appLocales = [
-  LOCALES.ENGLISH,
-  LOCALES.POLISH,
-];
+export const appLocales = [LOCALES.ENGLISH, LOCALES.POLISH];
 
 export const formatTranslationMessages = (locale, messages) => {
-  const defaultFormattedMessages = locale !== DEFAULT_LOCALE
-    ? formatTranslationMessages(DEFAULT_LOCALE, enTranslationMessages)
-    : {};
+  const defaultFormattedMessages =
+    locale !== DEFAULT_LOCALE ? formatTranslationMessages(DEFAULT_LOCALE, enTranslationMessages) : {};
   return Object.keys(messages).reduce((formattedMessages, key) => {
-    const formattedMessage = !messages[key] && locale !== DEFAULT_LOCALE
-      ? defaultFormattedMessages[key]
-      : messages[key];
+    const formattedMessage =
+      !messages[key] && locale !== DEFAULT_LOCALE ? defaultFormattedMessages[key] : messages[key];
     return Object.assign(formattedMessages, { [key]: formattedMessage });
   }, {});
 };

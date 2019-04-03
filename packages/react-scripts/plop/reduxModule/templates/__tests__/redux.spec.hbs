@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { fromJS } from 'immutable';
+import Immutable from 'seamless-immutable';
 
 import {
   reducer as {{ camelCase name }}Reducer,
@@ -9,16 +9,15 @@ import {
 
 
 describe('{{ pascalCase name }}: redux', () => {
-  const state = fromJS({
-  });
+  const state = Immutable({});
 
   describe('reducer', () => {
     it('should return initial state', () => {
-      expect({{ camelCase name }}Reducer(undefined, {}).toJS()).to.deep.equal(state.toJS());
+      expect({{ camelCase name }}Reducer(undefined, {})).to.deep.equal(state);
     });
 
     it('should return state on unknown action', () => {
-      expect({{ camelCase name }}Reducer(state, { type: 'unknown-action' }).toJS()).to.deep.equal(state.toJS());
+      expect({{ camelCase name }}Reducer(state, { type: 'unknown-action' })).to.deep.equal(state);
     });
   });
 });

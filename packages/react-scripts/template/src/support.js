@@ -8,7 +8,6 @@ import { DEFAULT_LOCALE, translationMessages } from './i18n';
 //eslint-disable-next-line import/first
 import messages from './support.messages';
 
-
 const detection = new UnsupportedBrowserDetection();
 
 window.onload = () => {

@@ -16,7 +16,7 @@ process.on('unhandledRejection', err => {
 
 const fs = require('fs-extra');
 const path = require('path');
-const chalk = require('chalk');
+const chalk = require('react-dev-utils/chalk');
 const execSync = require('child_process').execSync;
 const spawn = require('react-dev-utils/crossSpawn');
 const { defaultBrowsers } = require('react-dev-utils/browsersHelper');
@@ -96,7 +96,9 @@ module.exports = function(
     test: 'react-scripts test',
     eject: 'react-scripts eject',
     'extract-intl': 'react-scripts extractIntl en pl',
-    lint: "eslint .",
+    lint: 'yarn run lint:js && yarn run lint:css',
+    "lint:css":"stylelint './src/**/*.js'",
+    "lint:js":"eslint .",
   };
 
   // Setup the browsers list
@@ -105,11 +107,11 @@ module.exports = function(
   // Setup lint-staged on pre-commit
   appPackage.husky = {
     hooks: {
-      "pre-commit": 'lint-staged'
-    }
+      'pre-commit': 'lint-staged',
+    },
   };
   appPackage['lint-staged'] = {
-    "**/*.{js,jsx}": ["eslint"]
+    '**/*.{js,jsx}': ['eslint'],
   };
 
   fs.writeFileSync(

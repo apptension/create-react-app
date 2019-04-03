@@ -14,17 +14,19 @@ import configureStore from './modules/store';
 import UnsupportedBrowserDetection from './shared/utils/unsupportedBrowserDetection';
 import browserHistory from './shared/utils/history';
 
-
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
-}, () => {
-  document.body.classList.remove('fontLoaded');
-});
+openSansObserver.load().then(
+  () => {
+    document.body.classList.add('fontLoaded');
+  },
+  () => {
+    document.body.classList.remove('fontLoaded');
+  }
+);
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
@@ -32,7 +34,6 @@ openSansObserver.load().then(() => {
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
 const store = configureStore(initialState);
-
 
 if (process.env.NODE_ENV === 'development') {
   if (!window.__REDUX_DEVTOOLS_EXTENSION__) {
@@ -71,15 +72,12 @@ const initApp = async () => {
 
   // Chunked polyfill for browsers without Intl support
   if (!window.Intl) {
-    (new Promise((resolve) => {
+    new Promise(resolve => {
       resolve(require('intl'));
-    }))
-      .then(() => Promise.all([
-        require('intl/locale-data/jsonp/en.js'),
-        require('intl/locale-data/jsonp/pl.js'),
-      ]))
+    })
+      .then(() => Promise.all([require('intl/locale-data/jsonp/en.js'), require('intl/locale-data/jsonp/pl.js')]))
       .then(() => render())
-      .catch((err) => {
+      .catch(err => {
         throw err;
       });
   } else {

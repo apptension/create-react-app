@@ -1,16 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { fromJS } from 'immutable';
+import Immutable from 'seamless-immutable';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 import rootSaga from './sagas';
 
-
 const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState = {}) {
-  const middlewares = [
-    sagaMiddleware,
-  ];
+  const middlewares = [sagaMiddleware];
 
   const enhancers = [];
 
@@ -21,21 +18,21 @@ export default function configureStore(initialState = {}) {
 
     const getDebugSessionKey = () => {
       const matches = window.location.href.match(/[?&]debug_session=([^&#]+)\b/);
-      return (matches && matches.length > 0) ? matches[1] : null;
+      return matches && matches.length > 0 ? matches[1] : null;
     };
 
     Array.prototype.push.apply(enhancers, [
       require('../shared/utils/devtools.component').default.instrument(),
-      persistState(getDebugSessionKey(), (state) => fromJS(state)),
+      persistState(getDebugSessionKey(), state => Immutable(state)),
     ]);
   }
 
   const store = createStore(
     createReducer(),
-    fromJS(initialState),
+    Immutable(initialState),
     compose(
       applyMiddleware(...middlewares),
-      ...enhancers,
+      ...enhancers
     )
   );
 

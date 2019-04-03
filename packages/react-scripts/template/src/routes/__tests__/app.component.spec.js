@@ -6,16 +6,16 @@ import { spy } from 'sinon';
 import { DEFAULT_LOCALE, LOCALES } from '../../i18n';
 import { App } from '../app.component';
 
-
 describe('App: Component', () => {
   const children = <div className="app__children">Children</div>;
   const defaultProps = {
     setLanguage: () => {},
+    startup: () => {},
     language: DEFAULT_LOCALE,
     match: { params: { lang: LOCALES.POLISH } },
   };
 
-  const component = (props) => (
+  const component = props => (
     <App {...defaultProps} {...props}>
       {children}
     </App>
@@ -56,5 +56,12 @@ describe('App: Component', () => {
 
     expect(setLanguage).to.have.been.calledOnce;
     expect(setLanguage).to.have.been.calledWith(LOCALES.ENGLISH);
+  });
+
+  it('should call startup on mount', () => {
+    const startup = spy();
+    shallow(component({ startup }));
+
+    expect(startup).to.have.been.calledOnce;
   });
 });
