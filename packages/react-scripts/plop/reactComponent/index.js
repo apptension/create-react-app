@@ -30,12 +30,12 @@ module.exports = (plop) => {
       templateFile: path.join(templatesPath, 'styles.hbs'),
     }, {
       type: 'add',
-      path: `${containerDirectory}/__tests__/{{ camelCase name }}.component.spec.js`,
-      templateFile: path.join(templatesPath, '__tests__/component.spec.hbs'),
+      path: `${containerDirectory}/{{ camelCase name }}.stories.js`,
+      templateFile: path.join(templatesPath, 'stories.hbs'),
     }, {
       type: 'add',
-      path: `${containerDirectory}/__tests__/{{ camelCase name }}.stories.js`,
-      templateFile: path.join(templatesPath, 'stories.hbs'),
+      path: `${containerDirectory}/__tests__/{{ camelCase name }}.component.spec.js`,
+      templateFile: path.join(templatesPath, '__tests__/component.spec.hbs'),
     }],
   });
 };
