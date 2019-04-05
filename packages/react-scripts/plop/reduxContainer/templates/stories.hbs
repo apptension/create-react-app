@@ -1,8 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { withIntl } from '../../../.storybook/decorators';
 import { {{ pascalCase name }} } from './{{ camelCase name }}.component';
 
 const defaultProps = {};
 
-storiesOf('{{ pascalCase name }}', module).add('Default', () => <{{ pascalCase name }} {...defaultProps} />);
+storiesOf('{{ pascalCase name }}', module)
+  .addDecorator(withIntl)
+  .add('Default', () => <{{ pascalCase name }} {...defaultProps} />);
