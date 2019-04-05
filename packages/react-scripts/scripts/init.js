@@ -99,7 +99,8 @@ module.exports = function(
     lint: 'yarn run lint:js && yarn run lint:css',
     "lint:css": "stylelint './src/**/*.js'",
     "lint:js": "eslint .",
-    storybook: 'start-storybook'
+    storybook: 'start-storybook -p 6006',
+    'build-storybook': 'build-storybook'
   };
 
   // Setup the browsers list
