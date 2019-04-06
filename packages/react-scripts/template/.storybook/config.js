@@ -1,4 +1,6 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
+
+import { withIntl } from './decorators';
 
 function loadStories() {
   // automatically import all story js files that end with *.stories.js
@@ -6,5 +8,6 @@ function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
 
+addDecorator(withIntl)
 
 configure(loadStories, module);
