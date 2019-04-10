@@ -97,8 +97,10 @@ module.exports = function(
     eject: 'react-scripts eject',
     'extract-intl': 'react-scripts extractIntl en pl',
     lint: 'yarn run lint:js && yarn run lint:css',
-    "lint:css":"stylelint './src/**/*.js'",
-    "lint:js":"eslint .",
+    "lint:css": "stylelint './src/**/*.js'",
+    "lint:js": "eslint .",
+    storybook: 'start-storybook -p 6006',
+    'build-storybook': 'build-storybook'
   };
 
   // Setup the browsers list
