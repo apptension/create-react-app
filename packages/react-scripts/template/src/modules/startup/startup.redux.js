@@ -5,7 +5,7 @@ export const { Types: StartupTypes, Creators: StartupActions } = createActions(
   {
     startup: [],
   },
-  { prefix: 'STARTUP_' }
+  { prefix: 'STARTUP/' }
 );
 
 export const INITIAL_STATE = new Immutable({});

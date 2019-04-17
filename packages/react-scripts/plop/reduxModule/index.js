@@ -57,7 +57,7 @@ module.exports = (plop) => {
       type: 'modify',
       path: 'src/modules/sagas.js',
       pattern: /(\/\/<-- INJECT MODULE SAGA -->)/g,
-      template: 'fork(watch{{ pascalCase name }}),\n    $1',
+      template: 'fork(watch{{ pascalCase name }}),\n      $1',
     }],
   });
 };
