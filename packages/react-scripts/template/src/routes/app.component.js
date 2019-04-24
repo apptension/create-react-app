@@ -35,7 +35,11 @@ export class App extends PureComponent {
     }
 
     return (
-      <IntlProvider locale={this.props.language} messages={translationMessages[this.props.language]}>
+      <IntlProvider
+        key={this.props.language}
+        locale={this.props.language}
+        messages={translationMessages[this.props.language]}
+      >
         <Fragment>
           <FormattedMessage {...messages.pageTitle}>
             {pageTitle => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
