@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { IntlProvider } from 'react-intl';
-import { translationMessages, DEFAULT_LOCALE } from '../src/i18n';
+import { translationMessages, DEFAULT_LOCALE } from '../i18n';
 
 
 export const withTheme = (mode) => (story) => (

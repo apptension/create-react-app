@@ -16,11 +16,6 @@ describe('LanguageSwitcher: Component', () => {
 
   const component = props => <LanguageSwitcher {...defaultProps} {...props} />;
 
-  it('should render correctly', () => {
-    const wrapper = shallow(component());
-    global.expect(wrapper).toMatchSnapshot();
-  });
-
   it('should redirect after option click', () => {
     const history = { push: spy() };
     const wrapper = shallow(component({ history }));
