@@ -5,7 +5,7 @@ export const { Types: LocalesTypes, Creators: LocalesActions } = createActions(
   {
     setLanguage: ['language'],
   },
-  { prefix: 'LOCALES_' }
+  { prefix: 'LOCALES/' }
 );
 
 export const INITIAL_STATE = new Immutable({
