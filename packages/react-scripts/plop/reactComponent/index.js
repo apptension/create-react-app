@@ -18,8 +18,8 @@ module.exports = (plop) => {
         name: 'Class component',
         value: 'class',
       },{
-        name: 'Functional component',
-        value: 'functional'
+        name: 'Function component',
+        value: 'function'
       }],
     }, {
       type: 'directory',
