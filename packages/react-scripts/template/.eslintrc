@@ -36,7 +36,9 @@
         ]
       }
     ],
+    "react-hooks/rules-of-hooks": "error",
     "redux-saga/yield-effects": 0,
+    "react/display-name": 0,
     // https://github.com/pke/eslint-plugin-redux-saga/issues/15
     "redux-saga/no-unhandled-errors": 0,
     // https://github.com/pke/eslint-plugin-redux-saga/issues/15
