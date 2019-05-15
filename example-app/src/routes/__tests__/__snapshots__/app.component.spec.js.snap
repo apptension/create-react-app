@@ -4,6 +4,7 @@ exports[`App: Component should not render App when language is not set 1`] = `""
 
 exports[`App: Component should render App when language is set 1`] = `
 <IntlProvider
+  key="en"
   locale="en"
   messages={
     Object {
