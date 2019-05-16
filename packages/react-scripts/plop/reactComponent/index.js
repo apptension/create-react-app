@@ -34,7 +34,7 @@ module.exports = (plop) => {
     }, {
       type: 'add',
       path: `${containerDirectory}/{{ camelCase name }}.component.js`,
-      templateFile: path.join(templatesPath, '{{ type }}component.hbs'),
+      templateFile: path.join(templatesPath, '{{ type }}Component.hbs'),
     }, {
       type: 'add',
       path: `${containerDirectory}/{{ camelCase name }}.styles.js`,
