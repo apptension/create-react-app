@@ -10,7 +10,8 @@
     "es6": true
   },
   "plugins": [
-    "chai-friendly"
+    "chai-friendly",
+    "react-hooks"
   ],
   "rules": {
     "new-cap": [

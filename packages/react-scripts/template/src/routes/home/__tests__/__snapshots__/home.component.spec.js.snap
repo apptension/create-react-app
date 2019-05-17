@@ -15,6 +15,6 @@ exports[`Home: Component should render correctly 1`] = `
     />
   </styled.h1>
   <Styled(Component) />
-  <Connect(InjectIntl(withRouter(LanguageSwitcher))) />
+  <Connect(withRouter(LanguageSwitcher)) />
 </styled.div>
 `;
