@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App (by Apptension)](https://github.com/apptension/react-scripts-apptension).
 
 ## Available Scripts
 
@@ -48,21 +48,23 @@ Lints your JavaScript.
 ### `yarn plop`
 
 Generate Redux module (reducer, saga, selectors, action types, action creators, tests):
+
 ```Shell
 yarn plop module
 ```
 
 Generate Redux container and its react component in specified path:
+
 ```Shell
 yarn plop container
 ```
 
-Generate React component in specified path
+Generate React component (class or function) in specified path
+
 ```Shell
 yarn plop component
 ```
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
+You can learn more on [Create React App (by Apptension)](https://github.com/apptension/react-scripts-apptension).
