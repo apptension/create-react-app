@@ -11,17 +11,6 @@ module.exports = (plop) => {
       name: 'name',
       message: 'Name:',
     }, {
-      type: 'list',
-      name: 'type',
-      message: 'Choose component type:',
-      choices: [{
-        name: 'Class component',
-        value: 'class',
-      },{
-        name: 'Function component',
-        value: 'function'
-      }],
-    }, {
       type: 'directory',
       name: 'directory',
       basePath: 'src',
@@ -34,7 +23,7 @@ module.exports = (plop) => {
     }, {
       type: 'add',
       path: `${containerDirectory}/{{ camelCase name }}.component.js`,
-      templateFile: path.join(templatesPath, '{{ type }}Component.hbs'),
+      templateFile: path.join(templatesPath, 'component.hbs'),
     }, {
       type: 'add',
       path: `${containerDirectory}/{{ camelCase name }}.styles.js`,

@@ -12,7 +12,7 @@ describe('{{ pascalCase name }}: sagas', () => {
       .withState(defaultState)
       .put({{ pascalCase name }}Actions.noop())
       .dispatch(StartupActions.startup())
-      .run();
+      .silentRun();
 
     expect(sagaTester.getCalledActions()).to.deep.equal([{{ pascalCase name }}Actions.noop()]);
   });

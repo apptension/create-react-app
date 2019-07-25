@@ -1,25 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { actions } from '@storybook/addon-actions';
+import withRouter from 'storybook-react-router';
 
-import { LanguageSwitcher } from './languageSwitcher.component';
-import { LOCALES } from '../../../i18n';
-
-const actionsMap = actions('replace', 'push');
+import withRedux from '../../utils/withRedux';
+import { store } from '../../../../__mocks__/store';
+import { LanguageSwitcherComponent as LanguageSwitcher } from './languageSwitcher.component';
 
 const defaultProps = {
-  language: LOCALES.ENGLISH,
-  match: {
-    url: {
-      replace: actionsMap.replace,
-    },
-    params: {
-      lang: LOCALES.ENGLISH,
-    },
-  },
-  history: {
-    push: actionsMap.push,
-  },
+  match: {},
+  history: {},
 };
 
-storiesOf('LanguageSwitcher', module).add('Default', () => <LanguageSwitcher {...defaultProps} />);
+storiesOf('LanguageSwitcher', module)
+  .addDecorator(withRedux(store))
+  .addDecorator(withRouter())
+  .add('Default', () => <LanguageSwitcher {...defaultProps} />);
