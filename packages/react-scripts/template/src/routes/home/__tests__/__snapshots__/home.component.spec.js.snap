@@ -15,6 +15,6 @@ exports[`Home: Component should render correctly 1`] = `
     />
   </styled.h1>
   <Styled(Component) />
-  <withRouter(LanguageSwitcherComponent) />
+  <LanguageSwitcher />
 </styled.div>
 `;

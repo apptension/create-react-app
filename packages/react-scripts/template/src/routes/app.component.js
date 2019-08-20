@@ -2,9 +2,8 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { IntlProvider, FormattedMessage } from 'react-intl';
-import { compose } from 'ramda';
-import { withRouter } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
+import useRouter from 'use-react-router';
 
 import { translationMessages, DEFAULT_LOCALE } from '../i18n';
 import { GlobalStyle } from '../theme/global';
@@ -12,9 +11,10 @@ import messages from './app.messages';
 import { LocalesActions, selectLocalesLanguage } from '../modules/locales';
 import { StartupActions } from '../modules/startup';
 
-export const AppComponent = ({ children, match }) => {
+export const App = ({ children }) => {
   const language = useSelector(selectLocalesLanguage);
   const dispatch = useDispatch();
+  const { match } = useRouter();
 
   useEffect(() => {
     dispatch(StartupActions.startup());
@@ -42,9 +42,6 @@ export const AppComponent = ({ children, match }) => {
   );
 };
 
-AppComponent.propTypes = {
+App.propTypes = {
   children: PropTypes.node,
-  match: PropTypes.object.isRequired,
 };
-
-export const App = compose(withRouter)(AppComponent);

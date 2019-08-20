@@ -4,7 +4,7 @@ import withRouter from 'storybook-react-router';
 
 import withRedux from '../../utils/withRedux';
 import { store } from '../../../../__mocks__/store';
-import { LanguageSwitcherComponent as LanguageSwitcher } from './languageSwitcher.component';
+import { LanguageSwitcher } from './languageSwitcher.component';
 
 const defaultProps = {
   match: {},

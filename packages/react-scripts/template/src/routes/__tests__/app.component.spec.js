@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { clone } from 'ramda';
-
+import useRouter from 'use-react-router';
 import { DEFAULT_LOCALE, LOCALES } from '../../i18n';
-import { AppComponent as App } from '../app.component';
+import { App } from '../app.component';
 import { store } from '../../../__mocks__/store';
 import { StartupActions } from '../../modules/startup';
 import { LocalesActions } from '../../modules/locales';
@@ -15,6 +15,8 @@ jest.mock('react-redux', () => ({
   useSelector: selector => selector(mockStore),
   useDispatch: () => mockDispatch,
 }));
+
+jest.mock('use-react-router');
 
 describe('App: Component', () => {
   const children = <div className="app__children">Children</div>;
@@ -31,9 +33,14 @@ describe('App: Component', () => {
     </App>
   );
 
+  beforeEach(() => {
+    useRouter.mockReturnValue({ match: { params: { lang: LOCALES.POLISH } } });
+  });
+
   afterEach(() => {
     mockStore = clone(store);
     mockDispatch.mockClear();
+    useRouter.mockClear();
   });
 
   it('should not render App when language is not set', () => {
@@ -57,7 +64,8 @@ describe('App: Component', () => {
   });
 
   it('should set default language based on url when url is not matched', () => {
-    mount(component({ match: { params: { lang: undefined } } }));
+    useRouter.mockReturnValue({ match: { params: { lang: undefined } } });
+    mount(component());
 
     expect(mockDispatch).toHaveBeenCalledWith(LocalesActions.setLanguage(DEFAULT_LOCALE));
   });
@@ -66,7 +74,9 @@ describe('App: Component', () => {
     const wrapper = mount(component());
 
     mockDispatch.mockClear();
-    wrapper.setProps({ match: { params: { lang: LOCALES.ENGLISH } } });
+    useRouter.mockReturnValue({ match: { params: { lang: LOCALES.ENGLISH } } });
+
+    wrapper.setProps({});
 
     expect(mockDispatch).toHaveBeenCalledWith(LocalesActions.setLanguage(LOCALES.ENGLISH));
   });
