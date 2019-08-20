@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "@storybook/react": "^5.0.6",
     "@storybook/addon-actions": "^5.0.6",
     "@storybook/addon-links": "^5.0.6",
     "@storybook/addon-storyshots": "^5.0.6",
+    "@storybook/react": "^5.0.6",
+    "@testing-library/react-hooks": "^2.0.1",
     "axios": "^0.18.0",
     "babel-loader": "8.0.5",
     "enzyme": "^3.8.0",
