@@ -76,6 +76,7 @@ describe('App: Component', () => {
     mockDispatch.mockClear();
     useRouter.mockReturnValue({ match: { params: { lang: LOCALES.ENGLISH } } });
 
+    // force enzyme to re-render using new hook values
     wrapper.setProps({});
 
     expect(mockDispatch).toHaveBeenCalledWith(LocalesActions.setLanguage(LOCALES.ENGLISH));
