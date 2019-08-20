@@ -1,7 +1,7 @@
 const promptDirectory = require('inquirer-directory');
 
-const addReduxModuleGenerator = require('./plop/reduxModule');
-const addReactComponentGenerator = require('./plop/reactComponent');
+const addReduxModuleGenerator = require('@apptension/react-scripts/plop/reduxModule');
+const addReactComponentGenerator = require('@apptension/react-scripts/plop/reactComponent');
 
 module.exports = function(plop) {
   plop.setPrompt('directory', promptDirectory);
