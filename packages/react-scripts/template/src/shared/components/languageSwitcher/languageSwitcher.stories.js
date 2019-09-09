@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { withRedux, withRouter } from '../../../.storybook/decorators';
-import { store } from '../../../../__mocks__/store';
+import { store } from '../../../../fixtures/store';
 import { LanguageSwitcher } from './languageSwitcher.component';
 
 const defaultProps = {

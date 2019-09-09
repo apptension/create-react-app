@@ -4,7 +4,7 @@ import { clone } from 'ramda';
 import useRouter from 'use-react-router';
 import { DEFAULT_LOCALE, LOCALES } from '../../i18n';
 import { App } from '../app.component';
-import { store } from '../../../__mocks__/store';
+import { store } from '../../../fixtures/store';
 import { StartupActions } from '../../modules/startup';
 import { LocalesActions } from '../../modules/locales';
 

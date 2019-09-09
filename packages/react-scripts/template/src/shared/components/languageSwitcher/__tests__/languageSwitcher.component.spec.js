@@ -5,7 +5,7 @@ import useRouter from 'use-react-router';
 import { LanguageSwitcher } from '../languageSwitcher.component';
 import { Select } from '../languageSwitcher.styles';
 import { DEFAULT_LOCALE } from '../../../../i18n';
-import { store as mockStore } from '../../../../../__mocks__/store';
+import { store as mockStore } from '../../../../../fixtures/store';
 
 jest.mock('react-redux', () => ({
   useSelector: selector => selector(mockStore),
