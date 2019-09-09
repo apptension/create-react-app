@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { IntlProvider } from 'react-intl';
 import { translationMessages, DEFAULT_LOCALE } from '../i18n';
-import { Provider } from 'react-redux';
 import configureStore from '../modules/store';
 export { default as withRouter } from 'storybook-react-router';
 
