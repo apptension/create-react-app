@@ -11,6 +11,6 @@ describe('Startup: sagas', () => {
     await expectSaga(watchStartup)
       .withState(defaultState)
       .dispatch(StartupActions.startup())
-      .run();
+      .silentRun();
   });
 });

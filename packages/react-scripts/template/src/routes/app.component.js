@@ -1,54 +1,47 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { IntlProvider, FormattedMessage } from 'react-intl';
+import { useSelector, useDispatch } from 'react-redux';
+import useRouter from 'use-react-router';
 
 import { translationMessages, DEFAULT_LOCALE } from '../i18n';
 import { GlobalStyle } from '../theme/global';
 import messages from './app.messages';
+import { LocalesActions, selectLocalesLanguage } from '../modules/locales';
+import { StartupActions } from '../modules/startup';
 
-export class App extends PureComponent {
-  static propTypes = {
-    language: PropTypes.string,
-    children: PropTypes.node,
-    match: PropTypes.object.isRequired,
-    setLanguage: PropTypes.func.isRequired,
-    startup: PropTypes.func.isRequired,
-  };
+export const App = ({ children }) => {
+  const language = useSelector(selectLocalesLanguage);
+  const dispatch = useDispatch();
+  const { match } = useRouter();
 
-  componentDidMount() {
-    this.props.setLanguage(this.getLanguage(this.props));
-    this.props.startup();
+  useEffect(() => {
+    dispatch(StartupActions.startup());
+  }, []);
+
+  useEffect(() => {
+    dispatch(LocalesActions.setLanguage(match.params.lang || DEFAULT_LOCALE));
+  }, [match]);
+
+  if (!language) {
+    return null;
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.getLanguage(prevProps) !== this.getLanguage(this.props)) {
-      this.props.setLanguage(this.getLanguage(this.props));
-    }
-  }
+  return (
+    <IntlProvider key={language} locale={language} messages={translationMessages[language]}>
+      <Fragment>
+        <FormattedMessage {...messages.pageTitle}>
+          {pageTitle => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
+        </FormattedMessage>
 
-  getLanguage = props => props.match.params.lang || DEFAULT_LOCALE;
+        <GlobalStyle />
+        {React.Children.only(children)}
+      </Fragment>
+    </IntlProvider>
+  );
+};
 
-  render() {
-    if (!this.props.language) {
-      return null;
-    }
-
-    return (
-      <IntlProvider
-        key={this.props.language}
-        locale={this.props.language}
-        messages={translationMessages[this.props.language]}
-      >
-        <Fragment>
-          <FormattedMessage {...messages.pageTitle}>
-            {pageTitle => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
-          </FormattedMessage>
-
-          <GlobalStyle />
-          {React.Children.only(this.props.children)}
-        </Fragment>
-      </IntlProvider>
-    );
-  }
-}
+App.propTypes = {
+  children: PropTypes.node,
+};

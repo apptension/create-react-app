@@ -1,38 +1,37 @@
-import { expect } from 'chai';
 import Immutable from 'seamless-immutable';
 
 import { reducer as localesReducer, LocalesActions, LocalesTypes } from '../locales.redux';
 
 describe('Locales: redux', () => {
-  const state = Immutable({
+  const defaultState = Immutable({
     language: null,
   });
 
   describe('reducer', () => {
     it('should return initial state', () => {
-      expect(localesReducer(undefined, {})).to.deep.equal(state);
+      expect(localesReducer(undefined, {})).toEqual(defaultState);
     });
 
     it('should return state on unknown action', () => {
-      expect(localesReducer(state, { type: 'unknown-action' })).to.deep.equal(state);
+      expect(localesReducer(defaultState, { type: 'unknown-action' })).toEqual(defaultState);
     });
 
     it('should set data on SET_LANGUAGE', () => {
       const language = 'en';
-      const expectedState = state.set('language', language);
+      const expectedState = defaultState.set('language', language);
       const action = { language, type: LocalesTypes.SET_LANGUAGE };
-      expect(localesReducer(state, action)).to.deep.equal(expectedState);
+      expect(localesReducer(defaultState, action)).toEqual(expectedState);
     });
   });
 
   describe('setLanguage', () => {
     it('should return correct type', () => {
-      expect(LocalesActions.setLanguage().type).to.equal(LocalesTypes.SET_LANGUAGE);
+      expect(LocalesActions.setLanguage().type).toEqual(LocalesTypes.SET_LANGUAGE);
     });
 
     it('should return proper payload', () => {
       const language = 'en';
-      expect(LocalesActions.setLanguage(language).language).to.deep.equal(language);
+      expect(LocalesActions.setLanguage(language).language).toEqual(language);
     });
   });
 });

@@ -1,10 +1,22 @@
 import React from 'react';
-import { expect } from 'chai';
-import { shallow } from 'enzyme';
-import { spy } from 'sinon';
-
+import { shallow, mount } from 'enzyme';
+import { clone } from 'ramda';
+import useRouter from 'use-react-router';
 import { DEFAULT_LOCALE, LOCALES } from '../../i18n';
 import { App } from '../app.component';
+import { store } from '../../../fixtures/store';
+import { StartupActions } from '../../modules/startup';
+import { LocalesActions } from '../../modules/locales';
+
+const mockDispatch = jest.fn();
+let mockStore = clone(store);
+
+jest.mock('react-redux', () => ({
+  useSelector: selector => selector(mockStore),
+  useDispatch: () => mockDispatch,
+}));
+
+jest.mock('use-react-router');
 
 describe('App: Component', () => {
   const children = <div className="app__children">Children</div>;
@@ -21,47 +33,58 @@ describe('App: Component', () => {
     </App>
   );
 
+  beforeEach(() => {
+    useRouter.mockReturnValue({ match: { params: { lang: LOCALES.POLISH } } });
+  });
+
+  afterEach(() => {
+    mockStore = clone(store);
+    mockDispatch.mockClear();
+    useRouter.mockClear();
+  });
+
   it('should not render App when language is not set', () => {
+    mockStore.locales.language = undefined;
+
     const wrapper = shallow(component({ language: undefined }));
-    global.expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should render App when language is set', () => {
-    const wrapper = shallow(component({ language: 'en' }));
-    global.expect(wrapper).toMatchSnapshot();
+    mockStore.locales.language = 'en';
+
+    const wrapper = shallow(component());
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should set proper language based on url', () => {
-    const setLanguage = spy();
-    shallow(component({ setLanguage }));
+    mount(component());
 
-    expect(setLanguage).to.have.been.calledOnce;
-    expect(setLanguage).to.have.been.calledWith(LOCALES.POLISH);
+    expect(mockDispatch).toHaveBeenCalledWith(LocalesActions.setLanguage(LOCALES.POLISH));
   });
 
   it('should set default language based on url when url is not matched', () => {
-    const setLanguage = spy();
-    shallow(component({ setLanguage, match: { params: { lang: undefined } } }));
+    useRouter.mockReturnValue({ match: { params: { lang: undefined } } });
+    mount(component());
 
-    expect(setLanguage).to.have.been.calledOnce;
-    expect(setLanguage).to.have.been.calledWith(DEFAULT_LOCALE);
+    expect(mockDispatch).toHaveBeenCalledWith(LocalesActions.setLanguage(DEFAULT_LOCALE));
   });
 
   it('should set proper language when url changes', () => {
-    const setLanguage = spy();
-    const wrapper = shallow(component({ setLanguage }));
+    const wrapper = mount(component());
 
-    setLanguage.resetHistory();
-    wrapper.setProps({ match: { params: { lang: LOCALES.ENGLISH } } });
+    mockDispatch.mockClear();
+    useRouter.mockReturnValue({ match: { params: { lang: LOCALES.ENGLISH } } });
 
-    expect(setLanguage).to.have.been.calledOnce;
-    expect(setLanguage).to.have.been.calledWith(LOCALES.ENGLISH);
+    // force enzyme to re-render using new hook values
+    wrapper.setProps({});
+
+    expect(mockDispatch).toHaveBeenCalledWith(LocalesActions.setLanguage(LOCALES.ENGLISH));
   });
 
   it('should call startup on mount', () => {
-    const startup = spy();
-    shallow(component({ startup }));
+    mount(component());
 
-    expect(startup).to.have.been.calledOnce;
+    expect(mockDispatch).toHaveBeenCalledWith(StartupActions.startup());
   });
 });

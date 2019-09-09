@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import UnsupportedBrowserDetection from '../unsupportedBrowserDetection';
 
 /* eslint-disable max-len*/
@@ -90,7 +89,7 @@ describe('Utils: UnsupportedBrowserDetection Class', () => {
 
       const detector = component({ config });
 
-      expect(detector.isSupported()).to.be.true;
+      expect(detector.isSupported()).toBeTruthy();
     });
 
     it('should return false for unsupported browser', () => {
@@ -98,7 +97,7 @@ describe('Utils: UnsupportedBrowserDetection Class', () => {
 
       const detector = component({ config });
 
-      expect(detector.isSupported()).to.be.false;
+      expect(detector.isSupported()).toBeFalsy();
     });
 
     it('should return true when is in-app browser and isInAppBrowserSupported equals true', () => {
@@ -106,7 +105,7 @@ describe('Utils: UnsupportedBrowserDetection Class', () => {
 
       const detector = component({ config, isInAppBrowserSupported: true });
 
-      expect(detector.isSupported()).to.be.true;
+      expect(detector.isSupported()).toBeTruthy();
     });
 
     it('should return false when is in-app browser and isInAppBrowserSupported equals false', () => {
@@ -114,7 +113,7 @@ describe('Utils: UnsupportedBrowserDetection Class', () => {
 
       const detector = component({ config, isInAppBrowserSupported: false });
 
-      expect(detector.isSupported()).to.be.false;
+      expect(detector.isSupported()).toBeFalsy();
     });
   });
 });

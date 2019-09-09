@@ -12,6 +12,6 @@ describe('NotFound: Component', () => {
 
   it('should render correctly', () => {
     const wrapper = shallow(component());
-    global.expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
