@@ -1,12 +1,5 @@
-import { addLocaleData } from 'react-intl';
-import enLocaleData from 'react-intl/locale-data/en';
-import plLocaleData from 'react-intl/locale-data/pl';
-
 import enTranslationMessages from './translations/en.json';
 import plTranslationMessages from './translations/pl.json';
-
-addLocaleData(enLocaleData);
-addLocaleData(plLocaleData);
 
 export const LOCALES = {
   ENGLISH: 'en',

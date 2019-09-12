@@ -1,12 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { HomeComponent as Home } from '../home.component';
+import { Home } from '../home.component';
 
 describe('Home: Component', () => {
-  const defaultProps = {
-    intl: { formatMessage: ({ id }) => id },
-  };
+  const defaultProps = {};
 
   const component = props => <Home {...defaultProps} {...props} />;
 

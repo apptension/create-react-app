@@ -7,6 +7,7 @@ import { App } from '../app.component';
 import { store } from '../../../fixtures/store';
 import { StartupActions } from '../../modules/startup';
 import { LocalesActions } from '../../modules/locales';
+import initializeFonts from '../../theme/initializeFontFace';
 
 const mockDispatch = jest.fn();
 let mockStore = clone(store);
@@ -18,20 +19,21 @@ jest.mock('react-redux', () => ({
 
 jest.mock('use-react-router');
 
+jest.mock('../../theme/initializeFontFace');
+
+jest.mock('../../theme/theme', () => ({
+  color: {
+    white: '#fffffff',
+  },
+  font: {
+    primary: 'OpenSans',
+  },
+}));
+
 describe('App: Component', () => {
   const children = <div className="app__children">Children</div>;
-  const defaultProps = {
-    setLanguage: () => {},
-    startup: () => {},
-    language: DEFAULT_LOCALE,
-    match: { params: { lang: LOCALES.POLISH } },
-  };
 
-  const component = props => (
-    <App {...defaultProps} {...props}>
-      {children}
-    </App>
-  );
+  const component = props => <App {...props}>{children}</App>;
 
   beforeEach(() => {
     useRouter.mockReturnValue({ match: { params: { lang: LOCALES.POLISH } } });
@@ -40,6 +42,7 @@ describe('App: Component', () => {
   afterEach(() => {
     mockStore = clone(store);
     mockDispatch.mockClear();
+    initializeFonts.mockClear();
     useRouter.mockClear();
   });
 
@@ -86,5 +89,11 @@ describe('App: Component', () => {
     mount(component());
 
     expect(mockDispatch).toHaveBeenCalledWith(StartupActions.startup());
+  });
+
+  it('should initialize fonts on mount', () => {
+    mount(component());
+
+    expect(initializeFonts).toHaveBeenCalled();
   });
 });

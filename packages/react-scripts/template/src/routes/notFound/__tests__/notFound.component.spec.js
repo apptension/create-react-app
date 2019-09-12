@@ -1,12 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { NotFoundComponent as NotFound } from '../notFound.component';
+import { NotFound } from '../notFound.component';
 
 describe('NotFound: Component', () => {
-  const defaultProps = {
-    intl: { formatMessage: ({ id }) => id },
-  };
+  const defaultProps = {};
 
   const component = props => <NotFound {...defaultProps} {...props} />;
 

@@ -5,13 +5,12 @@ exports[`Home: Component should render correctly 1`] = `
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
-    title="home.pageTitle"
+    title="home.pageTitle / Homepage / {}"
   />
   <styled.h1>
     <FormattedMessage
       defaultMessage="Hello World!"
       id="home.welcome"
-      values={Object {}}
     />
   </styled.h1>
   <Styled(Component) />

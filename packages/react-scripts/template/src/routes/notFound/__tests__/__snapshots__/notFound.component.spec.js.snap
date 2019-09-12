@@ -5,13 +5,12 @@ exports[`NotFound: Component should render correctly 1`] = `
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
-    title="notFound.pageTitle"
+    title="notFound.pageTitle / Not found / {}"
   />
   <styled.h1>
     <FormattedMessage
       defaultMessage="Error: 404"
       id="notFound.title"
-      values={Object {}}
     />
   </styled.h1>
 </styled.div>
