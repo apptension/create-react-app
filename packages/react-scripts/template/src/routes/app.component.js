@@ -4,12 +4,15 @@ import Helmet from 'react-helmet';
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import useRouter from 'use-react-router';
+import { ResponsiveThemeProvider as ThemeProvider } from '../shared/components/responsiveThemeProvider';
 
 import { translationMessages, DEFAULT_LOCALE } from '../i18n';
 import { GlobalStyle } from '../theme/global';
 import messages from './app.messages';
 import { LocalesActions, selectLocalesLanguage } from '../modules/locales';
 import { StartupActions } from '../modules/startup';
+import initializeFontFace from '../theme/initializeFontFace';
+import theme from '../theme/theme';
 
 export const App = ({ children }) => {
   const language = useSelector(selectLocalesLanguage);
@@ -18,6 +21,7 @@ export const App = ({ children }) => {
 
   useEffect(() => {
     dispatch(StartupActions.startup());
+    initializeFontFace();
   }, []);
 
   useEffect(() => {
@@ -30,14 +34,16 @@ export const App = ({ children }) => {
 
   return (
     <IntlProvider key={language} locale={language} messages={translationMessages[language]}>
-      <Fragment>
-        <FormattedMessage {...messages.pageTitle}>
-          {pageTitle => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
-        </FormattedMessage>
+      <ThemeProvider theme={theme}>
+        <Fragment>
+          <FormattedMessage {...messages.pageTitle}>
+            {pageTitle => <Helmet titleTemplate={`%s - ${pageTitle}`} defaultTitle={pageTitle} />}
+          </FormattedMessage>
 
-        <GlobalStyle />
-        {React.Children.only(children)}
-      </Fragment>
+          <GlobalStyle />
+          {React.Children.only(children)}
+        </Fragment>
+      </ThemeProvider>
     </IntlProvider>
   );
 };

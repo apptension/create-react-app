@@ -1,18 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { compose } from 'ramda';
 
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import messages from './home.messages';
 import { LanguageSwitcher } from '../../shared/components/languageSwitcher';
 import { Container, Logo } from './home.styles';
 import { H1 } from '../../theme/typography';
 
-export const HomeComponent = ({ intl }) => {
+export const Home = () => {
+  const { formatMessage } = useIntl();
+
   return (
     <Container>
-      <Helmet title={intl.formatMessage(messages.pageTitle)} />
+      <Helmet title={formatMessage(messages.pageTitle)} />
 
       <H1>
         <FormattedMessage {...messages.welcome} />
@@ -24,9 +24,3 @@ export const HomeComponent = ({ intl }) => {
     </Container>
   );
 };
-
-HomeComponent.propTypes = {
-  intl: PropTypes.object.isRequired,
-};
-
-export const Home = compose(injectIntl)(HomeComponent);

@@ -18,18 +18,30 @@ exports[`App: Component should render App when language is set 1`] = `
     }
   }
 >
-  <FormattedMessage
-    defaultMessage="Apptension Boilerplate"
-    id="app.pageTitle"
-    values={Object {}}
+  <ResponsiveThemeProvider
+    theme={
+      Object {
+        "color": Object {
+          "white": "#fffffff",
+        },
+        "font": Object {
+          "primary": "OpenSans",
+        },
+      }
+    }
   >
-    <Component />
-  </FormattedMessage>
-  <GlobalStyleComponent />
-  <div
-    className="app__children"
-  >
-    Children
-  </div>
+    <FormattedMessage
+      defaultMessage="Apptension Boilerplate"
+      id="app.pageTitle"
+    >
+      <Component />
+    </FormattedMessage>
+    <GlobalStyleComponent />
+    <div
+      className="app__children"
+    >
+      Children
+    </div>
+  </ResponsiveThemeProvider>
 </IntlProvider>
 `;

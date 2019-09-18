@@ -1,17 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { injectIntl, FormattedMessage } from 'react-intl';
-import { compose } from 'ramda';
+import { useIntl, FormattedMessage } from 'react-intl';
 
 import messages from './notFound.messages';
 import { Container } from './notFound.styles';
 import { H1 } from '../../theme/typography';
 
-export const NotFoundComponent = ({ intl }) => {
+export const NotFound = () => {
+  const { formatMessage } = useIntl();
+
   return (
     <Container>
-      <Helmet title={intl.formatMessage(messages.pageTitle)} />
+      <Helmet title={formatMessage(messages.pageTitle)} />
 
       <H1>
         <FormattedMessage {...messages.title} />
@@ -19,9 +19,3 @@ export const NotFoundComponent = ({ intl }) => {
     </Container>
   );
 };
-
-NotFoundComponent.propTypes = {
-  intl: PropTypes.object.isRequired,
-};
-
-export const NotFound = compose(injectIntl)(NotFoundComponent);

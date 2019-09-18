@@ -11,17 +11,11 @@ export default (initialStore = {}) => story => {
   return <Provider store={store}>{story()}</Provider>;
 };
 
-export const withTheme = (mode) => (story) => (
-  <ThemeProvider theme={{ mode }}>{story()}</ThemeProvider>
-);
+export const withTheme = theme => story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>;
 
-export const withStore = (initialState) => (story) => (
-  <Provider store={initialState}>
-    {story()}
-  </Provider>
-);
+export const withStore = initialState => story => <Provider store={initialState}>{story()}</Provider>;
 
-export const withIntl = (story) => (
+export const withIntl = story => (
   <IntlProvider locale={DEFAULT_LOCALE} messages={translationMessages[DEFAULT_LOCALE]}>
     {story()}
   </IntlProvider>

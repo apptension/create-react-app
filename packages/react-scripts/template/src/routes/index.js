@@ -7,17 +7,15 @@ import { App } from './app.component';
 import { DEFAULT_LOCALE, appLocales, translationMessages } from '../i18n';
 import { Home } from './home';
 import { NotFound } from './notFound';
-
-export const ROUTES = {
-  home: '/',
-  notFound: '/404',
-};
+import { ROUTES } from './app.constants';
+//<-- IMPORT ROUTE -->
 
 const MatchedLanguageComponent = ({ match }) => {
   return (
     <App>
       <Switch>
         <Route exact path={`${match.path}${ROUTES.home}`} component={Home} />
+        {/* <-- INJECT ROUTE --> */}
 
         <Route component={NotFound} />
       </Switch>
