@@ -10,7 +10,7 @@ const defaultProps = {
   history: {},
 };
 
-storiesOf('LanguageSwitcher', module)
+storiesOf('Shared|LanguageSwitcher', module)
   .addDecorator(withRedux(store))
   .addDecorator(withRouter())
   .add('Default', () => <LanguageSwitcher {...defaultProps} />);
