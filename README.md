@@ -1,4 +1,6 @@
-# Create React App (by Apptension) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/apptension/react-scripts-apptension/pulls)
+This is the Apptension base template for Create React App.
+
+# Create React App Template (by Apptension) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/apptension/react-scripts-apptension/pulls)
 
 [create-react-app](https://github.com/facebook/create-react-app) scripts customised for Apptension projects.
 
@@ -12,13 +14,13 @@
 **npx**
 
 ```shell
-$ npx create-react-app [app-name] --scripts-version @apptension/react-scripts
+$ npx create-react-app [app-name] --template apptension
 ```
 
 **yarn**
 
 ```shell
-yarn create react-app [app-name] --scripts-version @apptension/react-scripts
+yarn create react-app [app-name] --template apptension
 ```
 
 2. Start application:
@@ -103,9 +105,9 @@ app-name
 ├── plopfile.js
 ├── yarn.lock
 ├── .git
-│   └── ...
+│   └── ...
 ├── public
-│   └── ...
+│   └── ...
 └── src
     ├── i18n.js
     ├── index.js
@@ -113,22 +115,22 @@ app-name
     ├── support.js
     ├── support.messages.js
     ├── .storybook
-    │   └── ...
+    │   └── ...
     ├── images
-    │   └── ...
+    │   └── ...
     ├── modules
-    │   └── ...
+    │   └── ...
     ├── routes
-    │   └── ...
+    │   └── ...
     ├── shared
-    │   ├── components
-    │   │   └── ...
-    │   ├── services
-    │   │   └── ...
-    │   └── utils
-    │       └── ...
+    │   ├── components
+    │   │   └── ...
+    │   ├── services
+    │   │   └── ...
+    │   └── utils
+    │       └── ...
     ├── theme
-    │   └── ...
+    │   └── ...
     └── translations
         └── ...
 ```
@@ -249,8 +251,6 @@ Here's a curated list of packages that you should have knowledge of, before star
 #### Testing
 
 - [ ] [Jest](https://facebook.github.io/jest/)
-- [ ] [Sinon](http://sinonjs.org/)
-- [ ] [Chai](http://chaijs.com/)
 - [ ] [Enzyme](https://github.com/airbnb/enzyme)
 - [ ] [Redux Saga Test Plan](http://redux-saga-test-plan.jeremyfairbank.com/)
 
