@@ -1,21 +1,19 @@
-import Immutable from 'seamless-immutable';
-import { createReducer, createActions } from 'reduxsauce';
+import { actionCreator, createImmutableReducer } from '../helpers';
 
-export const { Types: LocalesTypes, Creators: LocalesActions } = createActions(
-  {
-    setLanguage: ['language'],
-  },
-  { prefix: 'LOCALES/' }
-);
+const createAction = actionCreator('LOCALES');
 
-export const INITIAL_STATE = new Immutable({
+export const setLanguage = createAction('SET_LANGUAGE');
+
+const INITIAL_STATE = {
   language: null,
-});
-
-export const setLanguageHandler = (state = INITIAL_STATE, action) => state.set('language', action.language);
-
-export const HANDLERS = {
-  [LocalesTypes.SET_LANGUAGE]: setLanguageHandler,
 };
 
-export const reducer = createReducer(INITIAL_STATE, HANDLERS);
+const setLanguageHandler = (state, { payload }) => {
+  state.language = payload;
+};
+
+const HANDLERS = {
+  [setLanguage]: setLanguageHandler,
+};
+
+export const reducer = createImmutableReducer(INITIAL_STATE, HANDLERS);
