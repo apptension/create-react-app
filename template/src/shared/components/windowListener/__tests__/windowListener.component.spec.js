@@ -1,19 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { empty } from 'ramda';
-import Immutable from 'seamless-immutable';
 import throttle from 'lodash.throttle';
 import { WindowListener } from '../windowListener.component';
 
 jest.mock('lodash.throttle', () => jest.fn().mockImplementation(fn => fn));
 
 describe('WindowListener: Component', () => {
-  const defaultProps = Immutable({
+  const defaultProps = {
     throttle: 100,
     onEvent: empty,
     eventType: 'scroll',
     options: { foo: 'bar' },
-  });
+  };
 
   const component = props => <WindowListener {...defaultProps} {...props} />;
 
