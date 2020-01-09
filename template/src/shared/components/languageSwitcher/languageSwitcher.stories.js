@@ -16,6 +16,6 @@ const renderComponent = (props = {}) => {
 
 const stories = storiesOf('Shared|LanguageSwitcher', module)
   .addDecorator(withRedux(store))
-  .addDecorator(withRouter())
+  .addDecorator(withRouter());
 
 stories.add('Default', () => renderComponent());
