@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { NotFound } from '../notFound.component';
+import { NotFoundComponent } from '../notFound.component';
 import { makeContextRenderer } from 'utils/testUtils';
 
 describe('NotFound: Component', () => {
   const defaultProps = {};
 
-  const component = props => <NotFound {...defaultProps} {...props} />;
+  const component = props => <NotFoundComponent {...defaultProps} {...props} />;
   const render = makeContextRenderer(component);
 
   it('should render correctly', () => {

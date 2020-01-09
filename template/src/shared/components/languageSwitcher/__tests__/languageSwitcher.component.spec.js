@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { fireEvent, makeContextRenderer, spiedHistory } from 'utils/testUtils';
-import { LanguageSwitcher } from '../languageSwitcher.component';
+import { LanguageSwitcherComponent } from '../languageSwitcher.component';
 import { DEFAULT_LOCALE } from '../../../../i18n';
 
 describe('LanguageSwitcher: Component', () => {
   const defaultProps = {};
 
-  const component = props => <LanguageSwitcher {...defaultProps} {...props} />;
+  const component = props => <LanguageSwitcherComponent {...defaultProps} {...props} />;
   const render = makeContextRenderer(component);
 
   it('should redirect after option click', () => {
