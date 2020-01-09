@@ -1,23 +1,23 @@
 import React from 'react';
 
-import { fireEvent, makeContextRenderer, spiedHistory } from 'utils/testUtils';
-import { LanguageSwitcherComponent } from '../languageSwitcher.component';
+import { fireEvent, makeContextRenderer, spiedHistory, screen } from 'utils/testUtils';
+import { LanguageSwitcher } from '../index';
 import { DEFAULT_LOCALE } from '../../../../i18n';
 
 describe('LanguageSwitcher: Component', () => {
   const defaultProps = {};
 
-  const component = props => <LanguageSwitcherComponent {...defaultProps} {...props} />;
+  const component = props => <LanguageSwitcher {...defaultProps} {...props} />;
   const render = makeContextRenderer(component);
 
   it('should redirect after option click', () => {
-    const { history, pushSpy } = spiedHistory(`/${DEFAULT_LOCALE}/`);
-    const { container } = render({ history });
+    const { history, pushSpy } = spiedHistory(`/${DEFAULT_LOCALE}/some/custom/url`);
+    render({}, { router: { history, routePath: '/:lang/some/custom/url' } });
 
-    const event = { target: { value: 'something-else' } };
-    fireEvent.change(container.firstChild, event);
+    const event = { target: { value: 'pl' } };
+    fireEvent.change(screen.getByTestId('select'), event);
 
     expect(pushSpy).toHaveBeenCalledTimes(1);
-    expect(pushSpy).toHaveBeenCalledWith('/something-else/some/custom/url');
+    expect(pushSpy).toHaveBeenCalledWith('/pl/some/custom/url');
   });
 });

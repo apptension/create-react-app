@@ -1,7 +1,6 @@
 import React from 'react';
-
-import { NotFoundComponent } from '../notFound.component';
 import { makeContextRenderer } from 'utils/testUtils';
+import { NotFoundComponent } from '../notFound.component';
 
 describe('NotFound: Component', () => {
   const defaultProps = {};
@@ -11,6 +10,6 @@ describe('NotFound: Component', () => {
 
   it('should render correctly', () => {
     const { container } = render();
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
