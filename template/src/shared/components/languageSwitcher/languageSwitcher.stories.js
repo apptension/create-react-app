@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { withRedux, withRouter } from '../../../.storybook/decorators';
 import { store } from '../../../../fixtures/store';
-import { LanguageSwitcher } from './languageSwitcher.component';
+import { LanguageSwitcherComponent } from './languageSwitcher.component';
 
 const defaultProps = {
   match: {},
@@ -13,4 +13,4 @@ const defaultProps = {
 storiesOf('LanguageSwitcher', module)
   .addDecorator(withRedux(store))
   .addDecorator(withRouter())
-  .add('Default', () => <LanguageSwitcher {...defaultProps} />);
+  .add('Default', () => <LanguageSwitcherComponent {...defaultProps} />);

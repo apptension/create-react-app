@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { LanguageSwitcher } from '../languageSwitcher.component';
+import { LanguageSwitcherComponent } from '../languageSwitcher.component';
 import { Select } from '../languageSwitcher.styles';
 import { DEFAULT_LOCALE } from '../../../../i18n';
 import { store as mockStore } from '../../../../../fixtures/store';
@@ -15,7 +15,7 @@ describe('LanguageSwitcher: Component', () => {
     language: DEFAULT_LOCALE,
   };
 
-  const component = props => <LanguageSwitcher {...defaultProps} {...props} />;
+  const component = props => <LanguageSwitcherComponent {...defaultProps} {...props} />;
 
   it('should redirect after option click', () => {
     const pushSpy = jest.fn();
