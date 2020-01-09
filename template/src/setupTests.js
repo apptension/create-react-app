@@ -1,3 +1,5 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import 'isomorphic-fetch';
 import 'jest-enzyme';
 import Enzyme from 'enzyme';
