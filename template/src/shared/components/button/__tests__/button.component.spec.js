@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Button } from '../button.component';
+import { ButtonComponent } from '../button.component';
 import { Container } from '../button.styles';
 
 describe('Button: Component', () => {
   const defaultProps = {};
 
-  const component = props => <Button {...defaultProps} {...props} />;
+  const component = props => <ButtonComponent {...defaultProps} {...props} />;
 
   const render = (props = {}) => shallow(component(props));
 
