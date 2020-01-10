@@ -1,12 +1,8 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import '@testing-library/jest-dom/extend-expect';
 import 'isomorphic-fetch';
-import 'jest-enzyme';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import nock from 'nock';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 nock.disableNetConnect();
 
