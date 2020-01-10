@@ -17,6 +17,6 @@ initStoryshots({
     const storyElement = story.render(context);
 
     const {container} = render(storyElement)
-    expect(container.firstChild).toMatchSpecificSnapshot(snapshotFilename);
+    expect(container).toMatchSpecificSnapshot(snapshotFilename);
   },
 });
