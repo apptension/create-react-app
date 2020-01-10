@@ -1,5 +1,6 @@
 {
   "extends": [
+    "react-app",
     "plugin:prettier/recommended",
     "@apptension/eslint-config-react"
   ],
@@ -13,29 +14,6 @@
     "react-hooks"
   ],
   "rules": {
-    "new-cap": [
-      2,
-      {
-        "capIsNewExceptions": [
-          "List",
-          "Map",
-          "Record",
-          "OrderedMap",
-          "OrderedSet"
-        ]
-      }
-    ],
-    "babel/new-cap": [
-      2,
-      {
-        "capIsNewExceptions": [
-          "List",
-          "Map"
-        ]
-      }
-    ],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "redux-saga/yield-effects": 0,
     "react/display-name": 0,
     // https://github.com/pke/eslint-plugin-redux-saga/issues/15
