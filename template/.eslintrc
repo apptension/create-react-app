@@ -21,8 +21,7 @@
           "Map",
           "Record",
           "OrderedMap",
-          "OrderedSet",
-          "Immutable"
+          "OrderedSet"
         ]
       }
     ],
@@ -31,12 +30,12 @@
       {
         "capIsNewExceptions": [
           "List",
-          "Map",
-          "Immutable"
+          "Map"
         ]
       }
     ],
     "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "redux-saga/yield-effects": 0,
     "react/display-name": 0,
     // https://github.com/pke/eslint-plugin-redux-saga/issues/15
