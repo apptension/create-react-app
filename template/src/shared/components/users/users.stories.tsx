@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { withRedux, withRouter } from '../../../.storybook/decorators';
+import { withRedux, withRouter } from '../../../../.storybook/decorators';
 import { store } from '../../../../fixtures/store';
 import { Users } from '.';
 
