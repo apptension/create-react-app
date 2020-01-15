@@ -5,6 +5,11 @@
 <br/>
 <div style="text-align:center"><img src="http://image.ibb.co/jhaXCn/logo_transitions_5.gif" /></div>
 
+## :warning: Disclaimer
+
+This library is not maintained anymore and is only compatible with [create-react-app](https://github.com/facebook/create-react-app) prior to version *3.3.0*.
+For usage with versions *3.3.0+*  please use [cra-template-apptension](https://github.com/apptension/cra-template-apptension).
+
 ## Quick start
 
 1. Run create-react-app with Apptension's scripts:
