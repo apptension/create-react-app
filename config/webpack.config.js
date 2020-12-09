@@ -405,9 +405,6 @@ module.exports = function (webpackEnv) {
                 customize: require.resolve(
                   'babel-preset-react-app/webpack-overrides'
                 ),
-                // @remove-on-eject-begin
-                babelrc: false,
-                configFile: false,
                 presets: [
                   [
                     require.resolve('babel-preset-react-app'),
@@ -416,6 +413,9 @@ module.exports = function (webpackEnv) {
                     },
                   ],
                 ],
+                // @remove-on-eject-begin
+                babelrc: false,
+                configFile: false,
                 // Make sure we have a unique cache identifier, erring on the
                 // side of caution.
                 // We remove this when the user ejects because the default
@@ -722,6 +722,10 @@ module.exports = function (webpackEnv) {
           swSrc,
           dontCacheBustURLsMatching: /\.[0-9a-f]{8}\./,
           exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
+          // Bump up the default maximum size (2mb) that's precached,
+          // to make lazy-loading failure scenarios less likely.
+          // See https://github.com/cra-template/pwa/issues/13#issuecomment-722667270
+          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         }),
       // TypeScript type checking
       useTypeScript &&
